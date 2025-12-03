@@ -900,11 +900,11 @@
                         e inizia il percorso verso il benessere.
                     </p>
     
-                    <div class="booking-card">
+                    <form class="booking-card" action="{{ url_for('prenota') }}" method="post">
                         <h4 class="mb-3"><i class="fas fa-clock me-2"></i>Informazioni Appuntamento</h4>
                         <div class="mb-3">
                             <label class="form-label">Tipo di Visita</label>
-                            <select class="form-select" id="visitType">
+                            <select class="form-select" id="visitType" name="visitType">
                                 <option value="">Seleziona tipo di visita</option>
                                 <option value="prima-visita">Prima Visita (60 min) - €80</option>
                                 <option value="controllo">Visita di Controllo (45 min) - €60</option>
@@ -915,26 +915,27 @@
     
                         <div class="mb-3">
                             <label class="form-label">Nome e Cognome</label>
-                            <input type="text" class="form-control" id="patientName" placeholder="Inserisci nome e cognome">
+                            <input type="text" class="form-control" id="patientName" name="patientName" placeholder="Inserisci nome e cognome">
                         </div>
     
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Telefono</label>
-                                <input type="tel" class="form-control" id="patientPhone" placeholder="+39 123 456 7890">
+                                <input type="tel" class="form-control" id="patientPhone" name="patientPhone" placeholder="+39 123 456 7890">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" id="patientEmail" placeholder="email@example.com">
+                                <input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="email@example.com">
                             </div>
                         </div>
     
                         <div class="mb-3">
                             <label class="form-label">Note (opzionale)</label>
-                            <textarea class="form-control" rows="3" id="patientNotes"
+                            <textarea class="form-control" rows="3" id="patientNotes" name="patientNotes"
                                 placeholder="Descrivi brevemente il motivo della visita..."></textarea>
                         </div>
-                    </div>
+                        <input type="submit">
+                    </form>
                 </div>
     
                 <div class="col-lg-6 fade-in visible">
