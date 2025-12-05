@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import mysql.connector
 
 form_char_limit_default = 96
 form_char_limit_notes = 1024
@@ -20,7 +21,7 @@ def prenota():
     def check_too_long(obj:dict):
         char_limit = form_char_limit_default
         for key, value in obj.items():
-            if key is 'patientNotes':
+            if key == 'patientNotes':
                 char_limit = form_char_limit_notes
             if len(value) > char_limit:
                 return True

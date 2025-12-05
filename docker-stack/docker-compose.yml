@@ -1,0 +1,30 @@
+services:
+  agendav:
+    image: ghcr.io/nagimov/agendav-docker:latest
+    container_name: agendav
+    environment:
+      - AGENDAV_SERVER_NAME=127.0.0.1
+      - AGENDAV_TITLE=Server AgenDAV Filippo
+      - AGENDAV_FOOTER=Hosted by Maxhomelab
+      - AGENDAV_CALDAV_SERVER=http://127.0.0.1:8081/cal.php
+      - AGENDAV_TIMEZONE=Europe/Rome
+      - AGENDAV_LANG=en
+      - AGENDAV_LOG_DIR=/tmp/
+      - AGENDAV_WEEKSTART=1
+    volumes:
+      - ./docker/agendav/settings.php:/var/www/agendav/web/config/settings.php
+    ports:
+      - "8080:8080"
+
+  baikal:
+    image: ckulka/baikal:nginx
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - ./baikal/config:/var/www/baikal/config
+      - ./baikal/data:/var/www/baikal/Specific
+
+networks:
+  baikal-caldav-net:
+    driver: bridge
