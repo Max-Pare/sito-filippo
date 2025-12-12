@@ -11,13 +11,12 @@ app = Flask(
 def home():
     return render_template('index.html')
 
+@app.route("/errore")
+def error_page(msg:str="Errore interno."):
+    return render_template('error.html', err_msg=msg)
+
 @app.route('/prenota', methods=['POST'])
 def prenota():
-    try:
-        data = request.form
-    except ValueError as e:
-        print('Received invalid/empty form data.')
-        abort(500, 'Ricevuti dati non validi, riprovate.')
 
     def check_too_long(obj:dict):
         return len(value) > 1024
@@ -36,8 +35,13 @@ def prenota():
             'patientPhone' : data.get('patientPhone'),
             'patientNotes' : data.get('patientNotes')
             }
-    abort(501)
-    
+    return error_page('Errore !!!')
+    try:
+        data = request.form
+    except ValueError as e:
+        print('Received invalid/empty form data.')
+        return error_page('I dati inseriti non sono validi, riprovare.')
+    return extract_data(data)
     return f"<h1>Richiesta ricevuta, verrete contattati al piu' presto.</h1><div></div><p>{data_obj}</p>"
 
 
