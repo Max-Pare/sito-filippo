@@ -12,574 +12,6 @@
     <!-- Google Fonts -->
     <link href="./static/site-assets/css2" rel="stylesheet">
     
-    <style>
-        :root {
-            --primary-color: #87A96B;
-            --secondary-color: #4A6FA5;
-            --accent-color: #F5F1EB;
-            --text-dark: #2C3E50;
-            --text-light: #6C757D;
-            --success-color: #28A745;
-            --warning-color: #FFC107;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #FFFFFF;
-        }
-        
-        .font-playfair {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        /* Navigation */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-brand {
-            font-weight: 600;
-            color: var(--primary-color) !important;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            color: var(--text-dark) !important;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--primary-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::after {
-            width: 80%;
-        }
-        
-        .btn-primary-custom {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            color: white;
-        }
-        
-        .btn-primary-custom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(135, 169, 107, 0.3);
-            color: white;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #E8F5E8 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        
-        .hero-image {
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .hero-image:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Carousel Styles */
-        .carousel-item img {
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .carousel-caption {
-            bottom: 30px;
-        }
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-        }
-        .carousel-indicators {
-            bottom: -50px;
-        }
-        .carousel-indicators button {
-            background-color: var(--primary-color);
-        }
-        
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-element:nth-child(odd) {
-            animation-delay: -3s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Services Section */
-        .services-section {
-            padding: 100px 0;
-            background: #FFFFFF;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-            height: 100%;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(135, 169, 107, 0.15);
-            border-color: var(--primary-color);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        
-        .service-description {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        /* Success Stories Section */
-        .success-stories {
-            padding: 100px 0;
-            background: var(--accent-color);
-        }
-        
-        .story-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .story-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-        }
-        
-        .story-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .story-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        
-        .story-content {
-            color: var(--text-light);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        
-        .story-quote {
-            font-style: italic;
-            color: var(--primary-color);
-            font-weight: 500;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 20px;
-            margin-top: 20px;
-        }
-        
-        /* Booking Section */
-        .booking-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: white;
-        }
-        
-        .booking-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .calendar-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            color: var(--text-dark);
-        }
-        
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        
-        .calendar-nav {
-            background: var(--primary-color);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .calendar-nav:hover {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .calendar-day:hover {
-            background: var(--accent-color);
-        }
-        
-        .calendar-day.available {
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        .calendar-day.selected {
-            background: var(--secondary-color);
-            color: white;
-        }
-        
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
-        }
-        
-        .time-slot {
-            padding: 12px;
-            background: var(--accent-color);
-            border: 2px solid transparent;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .time-slot:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .time-slot.selected {
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        /* About Section */
-        .about-section {
-            padding: 100px 0;
-            background: white;
-        }
-        
-        .about-content {
-            max-width: 600px;
-        }
-        
-        .about-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--text-dark);
-        }
-        
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-        
-        .credential-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .credential-icon {
-            width: 25px;
-            height: 25px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-size: 0.8rem;
-        }
-        
-        /* Blog Section */
-        .blog-section {
-            padding: 100px 0;
-            background: var(--accent-color);
-        }
-        
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-        
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        
-        .blog-content {
-            padding: 25px;
-        }
-        
-        .blog-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        
-        .blog-excerpt {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .blog-date {
-            color: var(--primary-color);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-        
-        .footer-link {
-            color: #BDC3C7;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        .footer-link:hover {
-            color: var(--primary-color);
-        }
-        
-        .contact-info {
-            margin-bottom: 15px;
-        }
-        
-        .contact-info i {
-            width: 20px;
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .service-card,
-            .story-card {
-                padding: 30px 20px;
-            }
-            
-            .calendar-grid {
-                gap: 5px;
-            }
-            
-            .time-slots {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Success Message */
-        .success-message {
-            background: var(--success-color);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .success-message.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -905,7 +337,7 @@
                         <div class="mb-3">
                             <label class="form-label">Tipo di Visita</label>
                             <select class="form-select" id="visitType" name="visitType">
-                                <option value="">Seleziona tipo di visita</option>
+                                <option disabled value="">Seleziona tipo di visita</option>
                                 <option value="prima-visita">Prima Visita (60 min) - €80</option>
                                 <option value="controllo">Visita di Controllo (45 min) - €60</option>
                                 <option value="trattamento">Trattamento Osteopatico (45 min) - €60</option>
@@ -915,16 +347,16 @@
     
                         <div class="mb-3">
                             <label class="form-label">Nome e Cognome</label>
-                            <input type="text" class="form-control" id="patientName" name="patientName" placeholder="Inserisci nome e cognome">
+                            <input required type="text" class="form-control" id="patientName" name="patientName" placeholder="Inserisci nome e cognome">
                         </div>
     
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Telefono</label>
-                                <input type="tel" class="form-control" id="patientPhone" name="patientPhone" placeholder="+39 123 456 7890">
+                                <input required type="tel" class="form-control" id="patientPhone" name="patientPhone" placeholder="+39 123 456 7890">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Email</label>
+                                <label class="form-label">Email (opzionale)</label>
                                 <input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="email@example.com">
                             </div>
                         </div>
@@ -932,7 +364,7 @@
                         <div class="mb-3">
                             <label class="form-label">Note (opzionale)</label>
                             <textarea class="form-control" rows="3" id="patientNotes" name="patientNotes"
-                                placeholder="Descrivi brevemente il motivo della visita..."></textarea>
+                                placeholder="Se vuoi, descrivi brevemente il motivo della visita..."></textarea>
                         </div>
                         <input type="submit" value="Invia" class="btn btn-primary-custom">
                     </form>
@@ -1381,7 +813,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(&#39;dolori-muscolari&#39;)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(dolori-muscolari)" data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Dolori Muscolo-scheletrici
                     </button>
                 </div>
@@ -1646,7 +1078,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(&#39;approccio-sportivo&#39;)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(approccio-sportivo)" data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Approccio Sportivo
                     </button>
                 </div>
@@ -1902,7 +1334,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(&#39;cefalee&#39;)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(cefalee)" data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Cefalee e Vertigini
                     </button>
                 </div>
@@ -2171,14 +1603,18 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(&#39;pediatrico&#39;)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(pediatrico)" data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Osteopatia Pediatrica
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function validateEmail(email){
 
+        }
+    </script>
     <!-- Bootstrap JS -->
     <script src="./static/site-assets/bootstrap.bundle.min.js.download"></script>
     
@@ -2488,22 +1924,8 @@
                     }
                 });
             });
-    /*            
-            // Add click tracking for modals
-            const modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
-            modalTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    const modalId = this.getAttribute('data-bs-target');
-                    console.log(`Modal opened: ${modalId}`);
-                    
-                    // Add analytics tracking here if needed
-                    // gtag('event', 'modal_open', { modal_id: modalId });
-                });
-            });
-        });
-        
-    */
-        // Navbar background change on scroll
+        },
+
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -2511,7 +1933,8 @@
             } else {
                 navbar.style.background = 'rgba(255, 255, 255, 0.95)';
             }
-        });
+        }));
     </script>
 
-</body></html>
+</body>
+</html>
