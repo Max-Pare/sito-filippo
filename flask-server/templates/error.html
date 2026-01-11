@@ -9,9 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="./static/site-assets/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./static/site-assets/all.min.css">
+    <link rel="stylesheet" href="./static/site-assets/main.css">
     <!-- Google Fonts -->
-    <link href="./static/site-assets/css2" rel="stylesheet">
+    <link href="./static/site-assets/google-fonts.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -62,6 +62,7 @@
     <div class="error-section">
         <h1 class="error-text about-title font-playfair">C'e' stato un errore:</h1>
         <h2 class="error-text about-title font-playfair">{{ err_msg }}</h2>
+        <button type="button" class="btn btn-primary-custom back-button font-playfair nav-item" onclick="history.back()">Torna indietro</button>
     </div>
 
     <!-- Bootstrap JS -->
