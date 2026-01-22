@@ -5,6 +5,7 @@ import os
 import minidb
 from datetime import datetime
 
+
 class Appointment(minidb.Model):
     date_received = str
     patient_name = str
@@ -27,6 +28,19 @@ app = Flask(
     # static_url_path='/site_files'
 )
 
+def clean_html(string):
+    newstr = string
+    for char in '<>/':
+        newstr = newstr.replace(char, ' ')
+    return newstr
+
+@app.route("/debug")
+def get_db():
+    entry_list = [f'<li>{clean_html(str(app))}</li>' for app in Appointment.load(db)]
+    entry_list.insert(0,'<ol>')
+    entry_list.append('</ol>')
+    elem = '\n'.join(entry_list)
+    return elem
 
 @app.route("/")
 def home():
@@ -39,23 +53,32 @@ def result_page(msg: str = "Errore interno."):
 
 
 def appointify(form_data):
-    return Appointment(
-        patient_name = form_data.get("patientName"),
-        visit_type = form_data.get("visitType"),
-        patient_email = form_data.get("patientEmail"),
-        patient_phone = form_data.get("patientPhone"),
-        patient_notes = form_data.get("patientNotes"),
-        date_received = str(datetime.now())
-    )
+    try: 
+        return Appointment(
+            patient_name = form_data.get("patientName"),
+            visit_type = form_data.get("visitType"),
+            patient_email = form_data.get("patientEmail"),
+            patient_phone = form_data.get("patientPhone"),
+            patient_notes = form_data.get("patientNotes"),
+            date_received = str(datetime.now())
+        )
+    except Exception as e:
+        log(f'Error while creating appointment: {e.with_traceback()}', 'CRITICAL')
+        
 
-def log_critical():
-    pass
+def log(message, logtype:str = 'INFO'):
+    msg = f'({datetime.now()})[{logtype}] {message}\n'
+    print(msg)
+    if not os.path.exists(f'{DATA_DIR}/error.log'):
+        open(f'{DATA_DIR}/error.log', 'w').close()
+    with open(f'{DATA_DIR}/error.log', 'a') as file:
+        file.write(msg)
+
 
 def register_appointment(booking_data: dict):
     appointment = appointify(booking_data)
     appointment.save(db)
     db.commit()
-    
     
     
 @app.route("/prenota", methods=["POST"])
@@ -81,10 +104,13 @@ def prenota():
     def check_data(form_data):
         for k, v in form_data.items():
             if k in required_form_data and not v:
+                log(f'User omitted required data ({k})', 'WARN')
                 return f"Alcuno dati obbligatori non sono stati inseriti ({k})"
             if len(v) > 1024:
+                log(f'User inserted too many characters ({len(v)})', 'WARN')
                 return "Avete inserito troppi caratteri."
         if not check_phone_valid(form_data.get("patientPhone")):
+            log(f'User inserted invalid phone number ({form_data.get("patientPhone")})', 'WARN')
             return "Il numero di telefono inserito non e' valido."
         return "OK"
 
@@ -94,6 +120,7 @@ def prenota():
     register_appointment(form_data)
     for app in Appointment.load(db):
         print(app)
+    log('Registered appointment.')
     return result_page(
         "Richiesta ricevuta, verrete contattati al piu' presto."
     )

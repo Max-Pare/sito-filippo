@@ -1,1 +1,6 @@
-agendav
+.venv
+dati.zip
+**/data/
+instance
+**/__pycache__
+**/appointments.sqlite
