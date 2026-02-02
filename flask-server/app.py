@@ -1,10 +1,20 @@
 from flask import Flask, render_template, request
-import json
-import pathlib
 import os
 import minidb
-from datetime import datetime
+from datetime import datetime, tzinfo, timedelta
 
+class TZ1(tzinfo):
+    def utcoffset(self, dt):
+        return timedelta(hours=1)
+
+    def dst(self, dt):
+        return timedelta(0)
+
+    def tzname(self,dt):
+        return "+01:00"
+
+    def  __repr__(self):
+        return f"{self.__class__.__name__}()"
 
 class Appointment(minidb.Model):
     date_received = str
@@ -13,12 +23,15 @@ class Appointment(minidb.Model):
     patient_email = str
     patient_phone = str
     patient_notes = str
+
+def app_to_str(_app: Appointment):
+    return f'Tipo: {_app.visit_type}, Nome paziente: {_app.patient_name}, Tel.: {_app.patient_phone}, Email: {_app.patient_phone}, Note: {_app.patient_notes}, Data ricevuta: {_app.date_received}'
     
 DATA_DIR = './data'
-BOOKING_FILE = f'{DATA_DIR}/db.json' # may God have mercy on my soul
 db = minidb.Store('appointments.sqlite', debug=True)
 db.register(Appointment)
 required_form_data = ["name", "visitType", "patientPhone"]
+TIMEZONE = TZ1()
 if not os.path.isdir(DATA_DIR):
     os.mkdir(DATA_DIR)
 
@@ -36,7 +49,8 @@ def clean_html(string):
 
 @app.route("/debug")
 def get_db():
-    entry_list = [f'<li>{clean_html(str(app))}</li>' for app in Appointment.load(db)]
+    entry_list = []
+    entry_list = [f'<h4><li class="hero-title mb-4">{clean_html(app_to_str(_app))}</li></h4>' for _app in Appointment.load(db)]
     entry_list.insert(0,'<ol>')
     entry_list.append('</ol>')
     elem = '\n'.join(entry_list)
@@ -60,10 +74,12 @@ def appointify(form_data):
             patient_email = form_data.get("patientEmail"),
             patient_phone = form_data.get("patientPhone"),
             patient_notes = form_data.get("patientNotes"),
-            date_received = str(datetime.now())
+            date_received = str(datetime.now(tz=TIMEZONE).strftime(r'%m-%d-%y %H:%M:%S'))
         )
     except Exception as e:
-        log(f'Error while creating appointment: {e.with_traceback()}', 'CRITICAL')
+        raise(e)
+        log(f'Error while creating appointment: {str(e)}', 'CRITICAL')
+        return 'ERR'
         
 
 def log(message, logtype:str = 'INFO'):
@@ -77,6 +93,7 @@ def log(message, logtype:str = 'INFO'):
 
 def register_appointment(booking_data: dict):
     appointment = appointify(booking_data)
+    if appointment == 'ERR': return 'ERR'
     appointment.save(db)
     db.commit()
     
@@ -117,7 +134,7 @@ def prenota():
     form_data = extract_data(request.form)
     if (_res := check_data(form_data)) != "OK":
         return result_page(_res)
-    register_appointment(form_data)
+    if register_appointment(form_data) == 'ERR': return result_page()
     for app in Appointment.load(db):
         print(app)
     log('Registered appointment.')
