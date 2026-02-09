@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import os
 import minidb
 from datetime import datetime, tzinfo, timedelta
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 class TZ1(tzinfo):
     def utcoffset(self, dt):
@@ -24,9 +25,7 @@ class Appointment(minidb.Model):
     patient_phone = str
     patient_notes = str
 
-def app_to_str(_app: Appointment):
-    return f'Tipo: {_app.visit_type}, Nome paziente: {_app.patient_name}, Tel.: {_app.patient_phone}, Email: {_app.patient_phone}, Note: {_app.patient_notes}, Data ricevuta: {_app.date_received}'
-    
+
 DATA_DIR = './data'
 db = minidb.Store('appointments.sqlite', debug=True)
 db.register(Appointment)
@@ -41,13 +40,22 @@ app = Flask(
     # static_url_path='/site_files'
 )
 
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
+
+
+def app_to_str(_app: Appointment):
+    return f'Tipo: {_app.visit_type}, Nome paziente: {_app.patient_name}, Tel.: {_app.patient_phone}, Email: {_app.patient_phone}, Note: {_app.patient_notes}, Data ricevuta: {_app.date_received}'
+
+
 def clean_html(string):
     newstr = string
     for char in '<>/':
         newstr = newstr.replace(char, ' ')
     return newstr
 
-@app.route("/debug")
+@app.route("/appuntamenti")
 def get_db():
     entry_list = []
     entry_list = [f'<h4><li class="hero-title mb-4">{clean_html(app_to_str(_app))}</li></h4>' for _app in Appointment.load(db)]
@@ -141,3 +149,6 @@ def prenota():
     return result_page(
         "Richiesta ricevuta, verrete contattati al piu' presto."
     )
+
+if __name__ == "__main__":
+    app.run()
