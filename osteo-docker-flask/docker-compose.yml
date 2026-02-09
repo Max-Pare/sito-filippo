@@ -1,0 +1,6 @@
+services:
+    osteo-docker-flask:
+        build: osteo-docker-flask
+        ports:
+            - 5000:5000
+

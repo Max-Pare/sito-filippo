@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dr. Filippo Radice - Osteopata Professionista | Libera il tuo corpo, Ritrova la tua vitalità</title>
+        <meta name="description" content="Osteopata specializzato in dolori muscolo-scheletrici, approccio sportivo, cefalee e osteopatia pediatrica. Prenota la tua visita online.">
+        <!-- Bootstrap CSS -->
+        <link href="./static/site-assets/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="./static/site-assets/main.css">
+        <!-- Google Fonts -->
+        <link href="./static/site-assets/google-fonts.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(255, 255, 255, 0.95);">
+            <div class="container">
+                <a class="navbar-brand font-playfair" href="#home">
+                    <img src="./static/site-assets/ChatGPT_Image_8_set_2025,_10_19_32.png_97ede25c-b1d4-4e17-80a0-419ae6a4b649.png" alt="Dr. Filippo Radice Logo" style="height: 40px; width: auto; margin-right: 10px;">Dr. Filippo Radice
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Servizi
+                            </a> -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#servizi">Tutti i Servizi</a></li>
+                                <li><a class="dropdown-item" href="#dolori-muscolari">Dolori Muscolo-scheletrici</a></li>
+                                <li><a class="dropdown-item" href="#approccio-sportivo">Approccio Sportivo</a></li>
+                                <li><a class="dropdown-item" href="#cefalee">Cefalee e Vertigini</a></li>
+                                <li><a class="dropdown-item" href="#pediatrico">Osteopatia Pediatrica</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#chi-sono">Chi Sono</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#storie-successo">Storie di Successo</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#risorse">Risorse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contatti">Contatti</a>
+                        </li>
+                    </ul>
+                    <a href="#prenota" class="btn btn-primary-custom ms-3">Prenota Ora</a>
+                </div>
+            </div>
+        </nav>
+        <div class="error-section">
+            <h2 class="error-text about-title">{{ err_msg }}</h2>
+            <button type="button" class="btn btn-primary-custom back-button font-playfair nav-item" onclick="history.back()">Torna indietro</button>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="./static/site-assets/bootstrap.bundle.min.js.download"></script>
+        <!-- <script>
+            // Fade in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Enhanced modal functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add smooth animations to modal tabs
+                const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const targetTab = document.querySelector(this.getAttribute('data-bs-target'));
+                        if (targetTab) {
+                            setTimeout(() => {
+                                targetTab.style.opacity = '0';
+                                targetTab.style.transform = 'translateY(10px)';
+                                
+                                setTimeout(() => {
+                                    targetTab.style.transition = 'all 0.3s ease';
+                                    targetTab.style.opacity = '1';
+                                    targetTab.style.transform = 'translateY(0)';
+                                }, 50);
+                            }, 50);
+                        }
+                    });
+                });
+                
+                // Add click tracking for modals
+                const modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
+                modalTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function() {
+                        const modalId = this.getAttribute('data-bs-target');
+                        console.log(`Modal opened: ${modalId}`);
+                        
+                        // Add analytics tracking here if needed
+                        // gtag('event', 'modal_open', { modal_id: modalId });
+                    });
+                });
+            });
+            
+            // Navbar background change on scroll
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            });
+        </script> -->
+    </body>
+</html>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="footer-title">Dr. Filippo Radice</h5>
+                    <p style="color: #BDC3C7; line-height: 1.7;">
+                        Osteopata professionista specializzato in trattamenti personalizzati 
+                        per il benessere e la salute di tutta la famiglia.
+                    </p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" style="color: var(--primary-color); font-size: 1.2rem;">
+                            'Visita la pagina facebook'
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" style="color: var(--primary-color); font-size: 1.2rem;">
+                            'Visita la pagina instagram'
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" style="color: var(--primary-color); font-size: 1.2rem;">
+                            'Visita la pagina linkedin'
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Servizi</h5>
+                    <a href="#dolori-muscolari" class="footer-link">Dolori Muscolo-scheletrici</a>
+                    <a href="#approccio-sportivo" class="footer-link">Approccio Sportivo</a>
+                    <a href="#cefalee" class="footer-link">Cefalee e Vertigini</a>
+                    <a href="#pediatrico" class="footer-link">Osteopatia Pediatrica</a>
+                </div> -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Informazioni</h5>
+                    <a href="#chi-sono" class="footer-link">Chi Sono</a>
+                    <!-- <a href="#storie-successo" class="footer-link">Storie di Successo</a> -->
+                    <a href="#risorse" class="footer-link">Risorse e Articoli</a>
+                    <a href="#contatti" class="footer-link">Contatti</a>
+                    <a href="#" class="footer-link">Privacy Policy</a> <!--TODO: this-->
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Contatti</h5>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Via Roma 123, 20100 Milano</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 02 1234 5678</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@drfilipporadice.it</span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: #444; margin: 40px 0 20px;">
+            <div class="text-center" style="color: #BDC3C7;">
+                <p>© 2025 Dr. Filippo Radice - Osteopata. Tutti i diritti riservati.</p>
+                <p style="font-size: 0.9rem;">Sito realizzato con passione per il benessere dei pazienti.</p>
+            </div>
+        </div>
+    </footer>
