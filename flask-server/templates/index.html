@@ -17,14 +17,14 @@
     <!-- Navigation -->
     <nav aria-label="barra di navigazione" class="navbar navbar-expand-lg fixed-top" >
         <div class="container">
-            <a class="navbar-brand font-playfair" href="#home">
+            <!-- <a class="navbar-brand font-playfair" href="#home">
                 <img class="logo-main" src="./static/site-assets/logo-main-128.png" alt="Dr. Filippo Radice Logo" >Dr. Filippo Radice
-            </a>
+            </a> -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#home">Home</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown">
                         <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Servizi
@@ -349,8 +349,11 @@
                         Prenota la Tua Visita
                     </h2>
                     <p class="lead mb-4">
-                        La tua salute è un investimento, non una spesa. Prenota facilmente il tuo appuntamento
-                        e inizia il percorso verso il benessere.
+                        Se desideri prenotare una visita o ricevere
+                        informazioni, puoi contattarmi direttamente su
+                        WhatsApp oppure compilare il modulo di
+                        contatto.
+                        Ti ricontatterò il prima possibile.
                     </p>
 
                     <form class="booking-card" action="{{ url_for('prenota') }}" method="post">
@@ -471,44 +474,69 @@
             </div>
 
             <div class="row g-5">
-                <div class="col-lg-6 fade-in visible">
-                    <div >
+                <div class="fade-in visible">
+                    <div id="info-studio">
                         <h4 class="mb-4"><i class="fas fa-map-marker-alt me-2" ></i>Informazioni Studio</h4>
 
                         <div class="contact-info mb-3">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Via Roma 123, 20100 Milano (MI)</span>
+                            <span>
+                                <a href="https://maps.app.goo.gl/9FLc1XSaRKXaT4wv5">Via XX settembre 16 Gerenzano (VA) presso MSK Studio</a>
+                            </span>
                         </div>
 
                         <div class="contact-info mb-3">
-                            <i class="fas fa-phone"></i>
-                            <span>+39 02 1234 5678</span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>
+                                <a href="https://maps.app.goo.gl/HJUZNXnczihMcHbKA">Via Tiro a segno 5/A Gallarate (VA)</a>
+                            </span>
                         </div>
-
-                        <div class="contact-info mb-3">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@drfilipporadice.it</span>
-                        </div>
-
-                        <div class="contact-info mb-4">
+                        <!-- <div class="contact-info mb-4">
                             <i class="fas fa-clock"></i>
                             <span>Lun-Ven: 9:00-19:00 | Sab: 9:00-13:00</span>
-                        </div>
+                        </div> -->
 
-                        <h5 class="mb-3">Parcheggio e Trasporti</h5>
+                        <!-- <h5 class="mb-3">Parcheggio e Trasporti</h5>
                         <ul class="list-unstyled">
                             <li class="mb-2"><i class="fas fa-car me-2" ></i>Parcheggio gratuito disponibile</li>
                             <li class="mb-2"><i class="fas fa-subway me-2" ></i>Metro: Linea Rossa - Fermata Duomo</li>
                             <li class="mb-2"><i class="fas fa-bus me-2" ></i>Bus: Linee 50, 73, 94</li>
-                        </ul>
+                        </ul> -->
 
                         <a href="#prenota" class="btn btn-primary-custom mt-3">
                             <i class="fas fa-calendar-plus me-2"></i>Prenota Subito
                         </a>
                     </div>
+                    <div id="info-contatti">
+                        <h4 class="mb-4"><i class="fas fa-map-marker-alt me-2" ></i>Contatti</h4>
+
+
+                        <div class="contact-info mb-3">
+                            <i class="fas fa-phone"></i>
+                            <span><a href="tel:+393458508870">+39&nbsp;345&nbsp;8508870 </a></span>
+                        </div>
+
+                        <div class="contact-info mb-3">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:filipporadice.osteopata@gmail.com">filipporadice.osteopata@gmail.com</a></span>
+                        </div>
+
+                        <!-- <div class="contact-info mb-4">
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Ven: 9:00-19:00 | Sab: 9:00-13:00</span>
+                        </div> -->
+
+                        <!-- <h5 class="mb-3">Parcheggio e Trasporti</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-car me-2" ></i>Parcheggio gratuito disponibile</li>
+                            <li class="mb-2"><i class="fas fa-subway me-2" ></i>Metro: Linea Rossa - Fermata Duomo</li>
+                            <li class="mb-2"><i class="fas fa-bus me-2" ></i>Bus: Linee 50, 73, 94</li>
+                        </ul> -->
+
+                    </div>
                 </div>
 
-                <div class="col-lg-6 fade-in visible">
+                <!-- <div class="col-lg-6 fade-in visible">
                     <div >
                         <div >
                             <i class="fas fa-map" ></i>
@@ -519,7 +547,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
