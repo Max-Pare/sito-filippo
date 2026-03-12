@@ -13,6 +13,27 @@
     <link href="./static/site-assets/google-fonts.css" rel="stylesheet">
 
 </head>
+    <style>
+        .floating-image-link {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: block;
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: box-shadow 0.2s;
+        }
+        .floating-image-link:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+        .floating-image {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
 <body>
     <!-- Navigation -->
     <nav aria-label="barra di navigazione" class="navbar navbar-expand-lg fixed-top" >
@@ -71,8 +92,8 @@
                         <a href="#prenota" class="btn btn-primary-custom">
                             <i class="fas fa-calendar-plus me-2"></i>Prenota Visita
                         </a>
-                        <a href="#chi-sono" class="btn btn-outline-secondary btn-lg">
-                            <i class="fas fa-user-md me-2"></i>Scopri di Più
+                        <a href="https://wa.me/+393458508870" class="btn" aria-label="Prenota su WhatsApp">
+                            <img src="/static/site-assets/whastapp-logo.png" alt="Prenota" class="floating-image" />
                         </a>
                     </div>
                 </div>
@@ -227,32 +248,7 @@
                             Master MSc in Osteopathic
                             Sciences.
                         </p>
-                        <div class="credentials mt-4">
-                            <div class="credential-item">
-                                <div class="credential-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <span>Laurea in Osteopatia - Università Statale</span>
-                            </div>
-                            <div class="credential-item">
-                                <div class="credential-icon">
-                                    <i class="fas fa-certificate"></i>
-                                </div>
-                                <span>Specializzazione in Osteopatia Pediatrica</span>
-                            </div>
-                            <div class="credential-item">
-                                <div class="credential-icon">
-                                    <i class="fas fa-medal"></i>
-                                </div>
-                                <span>Certificazione Osteopatia Sportiva</span>
-                            </div>
-                            <div class="credential-item">
-                                <div class="credential-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <span>Membro Registro Osteopati Italia</span>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="about-content" id="ilmioapproccio">
                         <h2 class="about-title font-playfair">Il Mio Approccio</h2>
@@ -266,7 +262,7 @@
                             disturbo e come gestirlo.</strong>
                         </p>
                         <a href="#prenota" class="btn btn-primary-custom mt-4">
-                            <i class="fas fa-calendar-plus me-2"></i>Prenota Consulto
+                            <i class="fas fa-calendar-plus me-2"></i>Prenota Ora
                         </a>
                     </div>
                     <div class="col-lg-8 text-left fade-in visible" id="primavisita">
@@ -344,7 +340,7 @@
     <section id="prenota" class="booking-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 fade-in visible">
+                <div class="col-lg-12 fade-in visible">
                     <h2 class="font-playfair mb-4" >
                         Prenota la Tua Visita
                     </h2>
@@ -362,10 +358,8 @@
                             <label class="form-label">Tipo di Visita</label>
                             <select class="form-select" id="visitType" name="visitType">
                                 <option disabled value="">Seleziona tipo di visita</option>
-                                <option value="prima-visita">Prima Visita (60 min) - €80</option>
-                                <option value="controllo">Visita di Controllo (45 min) - €60</option>
-                                <option value="trattamento">Trattamento Osteopatico (45 min) - €60</option>
-                                <option value="pediatrico">Visita Pediatrica (30 min) - €50</option>
+                                <option value="prima-visita">Prima Visita (60 min) - €60</option>
+                                <option value="controllo">Visita di Controllo (60 min) - €60</option>
                             </select>
                         </div>
 
@@ -504,7 +498,7 @@
                         </ul> -->
 
                         <a href="#prenota" class="btn btn-primary-custom mt-3">
-                            <i class="fas fa-calendar-plus me-2"></i>Prenota Subito
+                            <i class="fas fa-calendar-plus me-2"></i>Prenota Ora
                         </a>
                     </div>
                     <div id="info-contatti">
@@ -575,14 +569,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="footer-title">Servizi</h5>
-                    <a href="#dolori-muscolari" class="footer-link">Dolori Muscolo-scheletrici</a>
-                    <a href="#approccio-sportivo" class="footer-link">Approccio Sportivo</a>
-                    <a href="#cefalee" class="footer-link">Cefalee e Vertigini</a>
-                    <a href="#pediatrico" class="footer-link">Osteopatia Pediatrica</a>
-                </div> -->
-
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5 class="footer-title">Informazioni</h5>
                     <a href="#chi-sono" class="footer-link">Chi Sono</a>
@@ -592,19 +578,23 @@
                     <a href="#" class="footer-link">Privacy Policy</a> <!--TODO: this-->
                 </div>
 
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-5 col-md-6 mb-4">
                     <h5 class="footer-title">Contatti</h5>
                     <div class="contact-info">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Via Roma 123, 20100 Milano</span>
+                        <span>Via XX settembre 16 Gerenzano (VA) presso MSK Studio</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Via Tiro a segno 5/A Gallarate (VA)</span>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
-                        <span>+39 02 1234 5678</span>
+                        <span>+39 345 8508870</span>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-envelope"></i>
-                        <span>info@drfilipporadice.it</span>
+                        <span>filipporadice.osteopata@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -613,7 +603,6 @@
 
             <div class="text-center" >
                 <p>© 2025 Dr. Filippo Radice - Osteopata. Tutti i diritti riservati.</p>
-                <p >Sito realizzato con passione per il benessere dei pazienti.</p>
             </div>
         </div>
     </footer>
@@ -1595,5 +1584,9 @@
         }));
     </script>
 
+    <!-- Floating Clickable Image (Bottom Right) -->
+    <a href="https://wa.me/+393458508870" class="floating-image-link" aria-label="Prenota su WhatsApp">
+        <img src="/static/site-assets/whastapp-logo.png" alt="Prenota" class="floating-image" />
+    </a>
 </body>
 </html>
