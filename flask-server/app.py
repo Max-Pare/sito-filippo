@@ -70,6 +70,12 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/privacy")
+def privacy_policy():
+    return render_template("privacy.html")
+
+
+
 # @app.route("/errore")
 def result_page(msg: str = "Errore interno."):
     return render_template("error.html", err_msg=msg)
