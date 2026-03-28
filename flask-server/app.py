@@ -1,3 +1,4 @@
+#!../.venv/bin/python3
 from flask import Flask, render_template, request
 import os
 import minidb
@@ -151,4 +152,4 @@ def prenota():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8080, host='localhost')
