@@ -133,6 +133,11 @@
             color: white;
         }
         
+        .prenota-btn {
+            max-height: 9.5dvh;
+            font-size: larger;
+        }
+
         /* Hero Section */
         .hero-section {
             background: linear-gradient(135deg, var(--accent-color) 0%, #E8F5E8 100%);
@@ -180,6 +185,10 @@
         }
         
         /* Carousel Styles */
+        .carousel-inner {
+            max-height: 90dvh;
+            height: max-content;
+        }
         .carousel-item img {
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -236,6 +245,15 @@
             border-color: var(--primary-color);
         }
         
+        .justify-center {
+            justify-self: center;
+        }
+
+        .justify-start {
+            justify-self: start;
+        }
+
+                
         .service-icon {
             width: 80px;
             height: 80px;
@@ -481,7 +499,7 @@
         
         .blog-image {
             width: 100%;
-            height: 200px;
+            height: 85px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
