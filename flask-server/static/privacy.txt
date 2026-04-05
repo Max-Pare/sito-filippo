@@ -1,4 +1,4 @@
-PRIVACY POLICY DEL SITO WEB
+**PRIVACY POLICY DEL SITO WEB**
 
 Ultimo aggiornamento: 28 marzo 2026
 
@@ -9,9 +9,9 @@ La presente Privacy Policy descrive le modalità di gestione del sito web in rif
 ### 1. TITOLARE DEL TRATTAMENTO
 
 Il Titolare del trattamento è:
-Filippo Radice
+**Filippo Radice**
 Attività privata – Osteopata
-Email di contatto: filippo.radice@gmail.com
+Email di contatto: [inserire email]
 
 ---
 
@@ -19,9 +19,9 @@ Email di contatto: filippo.radice@gmail.com
 
 Il sito raccoglie i seguenti dati personali forniti volontariamente dagli utenti tramite il form di contatto/prenotazione:
 
- Nome e cognome
- Indirizzo email
- Numero di telefono
+* Nome e cognome
+* Indirizzo email
+* Numero di telefono
 
 Non vengono raccolti dati sensibili tramite il sito.
 
@@ -31,9 +31,9 @@ Non vengono raccolti dati sensibili tramite il sito.
 
 I dati personali sono raccolti e trattati esclusivamente per le seguenti finalità:
 
- Gestione delle richieste di contatto
- Prenotazione di visite osteopatiche
- Comunicazioni relative all’attività professionale
+* Gestione delle richieste di contatto
+* Prenotazione di visite osteopatiche
+* Comunicazioni relative all’attività professionale
 
 I dati non saranno utilizzati per finalità di marketing o profilazione.
 
@@ -43,8 +43,8 @@ I dati non saranno utilizzati per finalità di marketing o profilazione.
 
 Il trattamento dei dati si basa su:
 
- Consenso espresso dall’utente tramite l’invio del form
- Esecuzione di misure precontrattuali su richiesta dell’utente
+* Consenso espresso dall’utente tramite l’invio del form
+* Esecuzione di misure precontrattuali su richiesta dell’utente
 
 ---
 
@@ -52,7 +52,7 @@ Il trattamento dei dati si basa su:
 
 I dati vengono trattati mediante strumenti informatici e conservati in un database interno protetto.
 
-Il database è cifrato e accessibile esclusivamente al Titolare, con l’adozione di adeguate misure di sicurezza volte a prevenire accessi non autorizzati, perdita o divulgazione dei dati.
+Il database è **cifrato** e accessibile esclusivamente al Titolare, con l’adozione di adeguate misure di sicurezza volte a prevenire accessi non autorizzati, perdita o divulgazione dei dati.
 
 ---
 
@@ -72,14 +72,14 @@ I dati personali non saranno diffusi né comunicati a terzi, salvo obblighi di l
 
 L’utente può esercitare in qualsiasi momento i diritti previsti dalla normativa vigente, tra cui:
 
- Accesso ai propri dati personali
- Rettifica o aggiornamento
- Cancellazione dei dati
- Limitazione o opposizione al trattamento
- Portabilità dei dati
- Revoca del consenso
+* Accesso ai propri dati personali
+* Rettifica o aggiornamento
+* Cancellazione dei dati
+* Limitazione o opposizione al trattamento
+* Portabilità dei dati
+* Revoca del consenso
 
-Le richieste possono essere inviate a: filippo.radice@gmail.com
+Le richieste possono essere inviate a: [inserire email]
 
 ---
 
@@ -98,6 +98,6 @@ La presente Privacy Policy può essere aggiornata in qualsiasi momento. Le modif
 ### 11. CONTATTI
 
 Per qualsiasi informazione o richiesta relativa al trattamento dei dati personali:
-Email: filippo.radice@gmail.com
+Email: [inserire email]
 
 ---
