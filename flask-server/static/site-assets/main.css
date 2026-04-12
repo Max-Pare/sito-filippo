@@ -33,12 +33,13 @@
     padding: 75px 0px;
 }
 #contenitore-id {
-    overflow: hidden; /* will contain if #first is longer than #second */
+    overflow: hidden;
+    justify-content: start;
+    justify-self: start;
+    justify-items: start;
 }
 
 #ilmioapproccio {
-    overflow: hidden;
-    padding: 0 0 0 0;
 }
 
 #chisono {
@@ -57,7 +58,7 @@
 }
 
 .logo-main {
-    width: 64px;
+    width: 55px;
 }
 :root {
     --primary-color: #87A96B;
@@ -91,7 +92,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .navbar-brand {
@@ -168,12 +169,16 @@ body {
 
 .hero-content {
     position: relative;
+    overflow: auto;
+    padding-top: 8vh;
     z-index: 2;
+    visibility: !important;
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 700;
+    max-height: fit-content;
     color: var(--text-dark);
     margin-bottom: 1.5rem;
     line-height: 1.2;
@@ -399,6 +404,10 @@ body {
     color: white;
 }
 
+.navbar-container {
+    height: fit-content;
+}
+
 .booking-card {
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
@@ -501,12 +510,11 @@ body {
 .about-section {
     padding: 0 0;
     background: white;
-    justify-items: auto;
 }
 
 .about-content {
     max-width: 600px;
-    justify-self: center;
+    justify-self: top;
 }
 
 .about-title {
@@ -646,10 +654,6 @@ body {
     margin-top: 4px;
 }
 
-/* each column */
-.info-block {
-}
-
 /* contact rows */
 .contact-info {
     display: flex;
@@ -675,7 +679,7 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .hero-subtitle {
