@@ -1,55 +1,35 @@
 <!DOCTYPE html>
-<html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Filippo Radice - Osteopata Professionista | Osteopatia per dolore muscoloscheletrico, cefalee e sportivi</title>
-    <meta name="description" content="Osteopata specializzato in dolori muscolo-scheletrici, approccio sportivo, cefalee e osteopatia pediatrica. Prenota la tua visita online.">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link href="./static/site-assets/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./static/site-assets/main.css">
-    <!-- Google Fonts -->
+
+    <!-- Fonts -->
     <link href="./static/site-assets/google-fonts.css" rel="stylesheet">
 
+    <meta name="description"
+        content="Osteopata specializzato in dolori muscolo-scheletrici, approccio sportivo, cefalee e osteopatia pediatrica. Prenota la tua visita online.">
+
+    <title>Dr. Filippo Radice - Osteopata Professionista</title>
 </head>
-    <style>
-        .floating-image-link {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9999;
-            display: block;
-            border-radius: 50%;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            transition: box-shadow 0.2s;
-        }
-        .floating-image-link:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-        }
-        .floating-image {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    </style>
+
 <body>
     <!-- Navigation -->
-    <nav aria-label="barra di navigazione" class="navbar navbar-expand-lg fixed-top" >
+    <nav aria-label="barra di navigazione" class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand font-playfair" href="#home">
-                <img class="logo-main" src="./static/site-assets/logo-main-128.png" alt="Dr. Filippo Radice Logo" >Dr. Filippo Radice
+                <img class="logo-main" src="./static/site-assets/logo-main-128.png" alt="Dr. Filippo Radice Logo">Dr.
+                Filippo Radice
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li> -->
                     <li class="nav-item dropdown">
-                        <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Servizi
-                        </a> -->
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#servizi">Tutti i Servizi</a></li>
                             <li><a class="dropdown-item" href="#dolori-muscolari">Dolori Muscolo-scheletrici</a></li>
@@ -61,9 +41,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#chi-sono">Chi Sono</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#storie-successo">Storie di Successo</a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#risorse">Risorse</a>
                     </li>
@@ -86,7 +63,7 @@
                     </h1>
                     <p class="hero-subtitle">
                         Valutazione clinica e trattamento osteopatico personalizzato per adulti,
-                         sportivi e bambini in crescita.
+                        sportivi e bambini in crescita.
                     </p>
                     <div class="flex items-center gap-4">
                         <a href="#prenota" class="btn btn-primary-custom prenota-btn">
@@ -98,50 +75,62 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center fade-in visible">
-                    <div id="heroCarousel" class="carousel slide pointer-event" data-bs-ride="carousel">
+                    <div id="heroCarousel" class="carousel slide pointer-event" data-ride="carousel" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+                            <button data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                            <button data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                            <button data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
                         </div>
                         <div class="carousel-inner">
+
                             <div class="carousel-item active">
-                                <img src="./static/site-assets/Filippo_Radice_-_2025-11-11_12_06_30.png_2cfd2fe3-6e38-4e1a-b655-4fc4e60c775f.png" alt="Studio Dr. Filippo Radice" class="d-block w-100 hero-image">
-                                <div class="carousel-caption d-none d-md-block" >
-                                    <h5>Il Mio Studio</h5>
-                                    <p>Ambiente professionale e accogliente per il tuo benessere</p>
-                                </div>
+                                <img src="./static/site-assets/studio1.jpeg" class="d-block w-100 hero-image">
                             </div>
+
+                            <div class="carousel-item">
+                                <img src="./static/site-assets/studio2.jpeg" class="d-block w-100 hero-image">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="./static/site-assets/studio3.jpeg" class="d-block w-100 hero-image">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="./static/site-assets/drfilippo.jpeg" class="d-block w-100 hero-image">
+                            </div>
+
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                 </div>
-
-
-                </div>
             </div>
+        </div>
 
 
         <!-- Floating Elements -->
-        <div class="floating-element" ></div>
-        <div class="floating-element" ></div>
-        <div class="floating-element" ></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
     </section>
 
     <!-- Services Section -->
     <section id="servizi" class="services-section">
         <div class="container">
             <div class="text-center mb-5 fade-in visible">
-                <h2 class="font-playfair" >
+                <h2 class="font-playfair">
                     Le mie aree di intervento
                 </h2>
-                <p class="lead" >
+                <p class="lead">
                     Dall'atleta al bambino, dal dolore cervicale al recupero posturale.
                     Ogni età, ogni sfida, un tocco esperto.
                 </p>
@@ -156,11 +145,12 @@
                         <h4 class="service-title">Dolori Muscolo-scheletrici</h4>
                         <p class="service-description">
                             Trattamento di lombalgie, cervicalgie e disturbi della spalla, sia in fase acuta
-                             che persistente.
-                             L'approccio si basa su una valutazione funzionale approfondita per
-                             individuare le reali cause del dolore, non solo il sintomo.
+                            che persistente.
+                            L'approccio si basa su una valutazione funzionale approfondita per
+                            individuare le reali cause del dolore, non solo il sintomo.
                         </p>
-                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#modalDoloriMuscolari">
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalDoloriMuscolari">
                             Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                         </button>
                     </div>
@@ -178,7 +168,8 @@
                             Il lavoro combina trattamento manuale ed esercizio attivo, adattati allo sport
                             praticato.
                         </p>
-                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#modalApproccioSportivo">
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalApproccioSportivo">
                             Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                         </button>
                     </div>
@@ -195,7 +186,8 @@
                             disturbi cervicali, quando indicato e in integrazione con il percorso medico.
                             L'obiettivo è ridurre l'impatto dei sintomi e migliorare la qualità della vita.
                         </p>
-                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#modalCefalee">
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalCefalee">
                             Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                         </button>
                     </div>
@@ -212,7 +204,8 @@
                             posturale e motorio.
                             Un approccio delicato e rispettoso, sempre condiviso con i genitori.
                         </p>
-                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#modalPediatrico">
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" data-bs-toggle="modal"
+                            data-bs-target="#modalPediatrico">
                             Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                         </button>
                     </div>
@@ -245,95 +238,44 @@
                     <div class="about-content" id="ilmioapproccio">
                         <h2 class="about-title font-playfair">Il Mio Approccio</h2>
                         <p class="about-text">
-                            Ogni trattamento inizia con una valutazione accurata. La prima visita <u>dura circa un'ora</u> e
-                            comprende un'<strong> anamnesi dettagliata, test clinici e funzionali e il trattamento osteopatico.</strong>
-                            L'approccio è basato sul ragionamento clinico e <u>sulla partecipazione attiva del paziente.</u>
-                            Quando necessario, il trattamento manuale è affiancato da esercizi e indicazioni pratiche per
+                            Ogni trattamento inizia con una valutazione accurata. La prima visita <u>dura circa
+                                un'ora</u> e
+                            comprende un'<strong> anamnesi dettagliata, test clinici e funzionali e il trattamento
+                                osteopatico.</strong>
+                            L'approccio è basato sul ragionamento clinico e <u>sulla partecipazione attiva del
+                                paziente.</u>
+                            Quando necessario, il trattamento manuale è affiancato da esercizi e indicazioni pratiche
+                            per
                             favorire il recupero e la gestione autonoma del problema.
-                            L'obiettivo è ridurre il dolore, migliorare la funzione e aiutare la persona a <strong>comprendere il proprio
-                            disturbo e come gestirlo.</strong>
+                            L'obiettivo è ridurre il dolore, migliorare la funzione e aiutare la persona a
+                            <strong>comprendere il proprio
+                                disturbo e come gestirlo.</strong>
                         </p>
                         <a href="#prenota" class="btn btn-primary-custom mt-4">
                             <i class="fas fa-calendar-plus me-2"></i>Prenota Ora
                         </a>
                     </div>
                     <div class="col-lg-8 text-left fade-in visible" id="primavisita">
-                        <!-- <img src="./static/site-assets/osteopath-healing-journey-512.jpg" alt="Percorso di guarigione osteopatico" class="img-fluid" > -->
                         <h2 class="hero-title font-playfair"> La prima visita </h2>
                         <p class="about-text"> La prima visita dura circa un'ora e si compone di: </p>
-                            <ul>
-                                <li>anamnesi dettagliata</li>
-                                <li>valutazione e test funzionali</li>
-                                <li>trattamento osteopatico</li>
-                            </ul>
-                        <p class="about-text">Al termine della visita viene spiegato il quadro clinico e, se necessario, proposto un percorso personalizzato. </p>
+                        <ul>
+                            <li>anamnesi dettagliata</li>
+                            <li>valutazione e test funzionali</li>
+                            <li>trattamento osteopatico</li>
+                        </ul>
+                        <p class="about-text">Al termine della visita viene spiegato il quadro clinico e, se necessario,
+                            proposto un percorso personalizzato. </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Success Stories Section
-    <section id="storie-successo" class="success-stories">
-        <div class="container">
-            <div class="text-center mb-5 fade-in visible">
-                <h2 class="font-playfair" >
-                    Storie di Successo
-                </h2>
-                <p class="lead" >
-                    Ogni paziente ha una storia unica. Scopri come l'osteopatia ha trasformato
-                    la vita di chi si è affidato alle mie cure.
-                </p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-lg-6 fade-in visible">
-                    <div class="story-card">
-                        <img src="./static/site-assets/success-story-sports-1-9e0b6e3f4bcf4e24.jpg" alt="Recupero sportivo" class="story-image">
-                        <h4 class="story-title">Il Ritorno all'Agilità di Marco</h4>
-                        <div class="story-content">
-                            <p><strong>Il Paziente:</strong> Marco, 35 anni, runner amatoriale con dolore persistente al ginocchio.</p>
-                            <p><strong>Il Problema:</strong> Dolore acuto che impediva la corsa, scarsa risposta a riposo e antinfiammatori.</p>
-                            <p><strong>L'Approccio:</strong> Individuazione dello squilibrio posturale, lavoro integrato su ginocchio, bacino, anca e caviglia, con esercizi mirati personalizzati.</p>
-                            <p><strong>Il Risultato:</strong> Ripresa graduale e completa dell'attività sportiva senza dolore, maggiore consapevolezza corporea.</p>
-                        </div>
-                        <div class="story-quote">
-                            "L'osteopata non ha curato solo il mio ginocchio, ha curato il mio modo di vivere lo sport."
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 fade-in visible">
-                    <div class="story-card">
-                        <img src="./static/site-assets/pediatric-care-abstract-1-ff304793411d4e52.jpg" alt="Cura pediatrica" class="story-image">
-                        <h4 class="story-title">Il Sorriso Ritrovato di Sofia</h4>
-                        <div class="story-content">
-                            <p><strong>La Paziente:</strong> Sofia, 8 anni, con frequenti mal di testa e tensioni cervicali.</p>
-                            <p><strong>Il Problema:</strong> Emicranie ricorrenti che incidevano negativamente su concentrazione e umore.</p>
-                            <p><strong>L'Approccio:</strong> Trattamento delicato per rilassare tensioni craniche e cervicali, miglioramento posturale con tecniche manuali leggere.</p>
-                            <p><strong>Il Risultato:</strong> Drastica riduzione di frequenza e intensità dei mal di testa, miglioramento dell'umore e della concentrazione.</p>
-                        </div>
-                        <div class="story-quote">
-                            "Vedere Sofia tornare a sorridere e giocare senza lamentele è la più grande soddisfazione."
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-5 fade-in visible">
-                <a href="#prenota" class="btn btn-primary-custom btn-lg">
-                    <i class="fas fa-heart me-2"></i>Inizia il Tuo Percorso
-                </a>
-            </div>
-        </div>
-    </section> -->
-
     <!-- Booking Section -->
     <section id="prenota" class="booking-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 fade-in visible">
-                    <h2 class="font-playfair mb-4" >
+                    <h2 class="font-playfair mb-4">
                         Prenota la Tua Visita
                     </h2>
                     <p class="lead mb-4">
@@ -357,17 +299,20 @@
 
                         <div class="mb-3">
                             <label class="form-label">Nome e Cognome</label>
-                            <input required type="text" class="form-control" id="patientName" name="patientName" placeholder="Inserisci nome e cognome">
+                            <input required type="text" class="form-control" id="patientName" name="patientName"
+                                placeholder="Inserisci nome e cognome">
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Telefono</label>
-                                <input required type="tel" class="form-control" id="patientPhone" name="patientPhone" placeholder="+39 123 456 7890">
+                                <input required type="tel" class="form-control" id="patientPhone" name="patientPhone"
+                                    placeholder="+39 123 456 7890">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Email (opzionale)</label>
-                                <input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="email@example.com">
+                                <input type="email" class="form-control" id="patientEmail" name="patientEmail"
+                                    placeholder="email@example.com">
                             </div>
                         </div>
 
@@ -387,10 +332,10 @@
     <section id="risorse" class="blog-section">
         <div class="container">
             <div class="text-center mb-5 fade-in visible">
-                <h2 class="font-playfair" >
+                <h2 class="font-playfair">
                     Risorse e Articoli
                 </h2>
-                <p class="lead" >
+                <p class="lead">
                     Approfondimenti, consigli e guide per prenderti cura del tuo benessere quotidiano.
                 </p>
             </div>
@@ -406,8 +351,9 @@
                                 Quante volte hai sentito dire: “Stai dritto, altrimenti ti verrà mal di schiena?
                                 Oppure magari ti sei accorto di stare “curvo” e...
                             </p>
-                            <button type="button" class="btn btn-outline-primary btn-articoli" data-bs-toggle="modal" data-bs-target="#modalPosturaCorretta">
-                            Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
+                            <button type="button" class="btn btn-outline-primary btn-articoli" data-bs-toggle="modal"
+                                data-bs-target="#modalPosturaCorretta">
+                                Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                             </button>
                         </div>
                     </div>
@@ -421,10 +367,12 @@
                         <div class="blog-content">
                             <h5 class="blog-title">Mal di testa e cervicale: che relazione c’è davvero?</h5>
                             <p class="blog-excerpt">
-                                Molte persone che soffrono di mal di testa sono convinte che la causa sia la “cervicale”. In realtà...
+                                Molte persone che soffrono di mal di testa sono convinte che la causa sia la
+                                “cervicale”. In realtà...
                             </p>
-                            <button type="button" class="btn btn-outline-primary btn-articoli" data-bs-toggle="modal" data-bs-target="#modalCervicale">
-                            Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
+                            <button type="button" class="btn btn-outline-primary btn-articoli" data-bs-toggle="modal"
+                                data-bs-target="#modalCervicale">
+                                Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                             </button>
                         </div>
                     </div>
@@ -441,8 +389,9 @@
                                 Il termine “tendinite” fa pensare a un’infiammazione del tendine.
                                 In realtà...
                             </p>
-                            <button type="button" class="btn btn-outline-primary btn-articoli" data-bs-toggle="modal" data-bs-target="#modalTendinite">
-                            Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
+                            <button type="button" class="btn btn-outline-primary btn-articoli" data-bs-toggle="modal"
+                                data-bs-target="#modalTendinite">
+                                Scopri di Più <i class="fas fa-arrow-right ms-1"></i>
                             </button>
                         </div>
                     </div>
@@ -451,96 +400,57 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contatti" class="py-5" >
-        <div class="container">
-            <div class="text-center mb-5 fade-in visible">
-                <h2 class="font-playfair" >
-                    Contatti e Studio
-                </h2>
-                <p class="lead" >
-                    Raggiungi facilmente il mio studio nel cuore della città.
-                </p>
-            </div>
+    <!-- Studio Info -->
+<div id="info-studio" class="info-studio">
 
-            <div class="row g-5">
-                <div class="fade-in visible">
-                    <div id="info-studio">
-                        <h4 class="mb-4"><i class="fas fa-map-marker-alt me-2" ></i>Informazioni Studio</h4>
+    <!-- LEFT -->
+    <div class="info-block">
+        <h4 class="mb-3">
+            <i class="fas fa-map-marker-alt me-2"></i>Informazioni Studio
+        </h4>
 
-                        <div class="contact-info mb-3">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>
-                                <a href="https://maps.app.goo.gl/9FLc1XSaRKXaT4wv5">Via XX settembre 16 Gerenzano (VA) presso MSK Studio</a>
-                            </span>
-                        </div>
-
-                        <div class="contact-info mb-3">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>
-                                <a href="https://maps.app.goo.gl/HJUZNXnczihMcHbKA">Via Tiro a segno 5/A Gallarate (VA)</a>
-                            </span>
-                        </div>
-                        <!-- <div class="contact-info mb-4">
-                            <i class="fas fa-clock"></i>
-                            <span>Lun-Ven: 9:00-19:00 | Sab: 9:00-13:00</span>
-                        </div> -->
-
-                        <!-- <h5 class="mb-3">Parcheggio e Trasporti</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-car me-2" ></i>Parcheggio gratuito disponibile</li>
-                            <li class="mb-2"><i class="fas fa-subway me-2" ></i>Metro: Linea Rossa - Fermata Duomo</li>
-                            <li class="mb-2"><i class="fas fa-bus me-2" ></i>Bus: Linee 50, 73, 94</li>
-                        </ul> -->
-
-                        <a href="#prenota" class="btn btn-primary-custom mt-3">
-                            <i class="fas fa-calendar-plus me-2"></i>Prenota Ora
-                        </a>
-                    </div>
-                    <div id="info-contatti">
-                        <h4 class="mb-4"><i class="fas fa-map-marker-alt me-2" ></i>Contatti</h4>
-
-
-                        <div class="contact-info mb-3">
-                            <i class="fas fa-phone"></i>
-                            <span><a href="tel:+393458508870">+39&nbsp;345&nbsp;8508870 </a></span>
-                        </div>
-
-                        <div class="contact-info mb-3">
-                            <i class="fas fa-envelope"></i>
-                            <span><a href="mailto:filipporadice.osteopata@gmail.com">filipporadice.osteopata@gmail.com</a></span>
-                        </div>
-
-                        <!-- <div class="contact-info mb-4">
-                            <i class="fas fa-clock"></i>
-                            <span>Lun-Ven: 9:00-19:00 | Sab: 9:00-13:00</span>
-                        </div> -->
-
-                        <!-- <h5 class="mb-3">Parcheggio e Trasporti</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-car me-2" ></i>Parcheggio gratuito disponibile</li>
-                            <li class="mb-2"><i class="fas fa-subway me-2" ></i>Metro: Linea Rossa - Fermata Duomo</li>
-                            <li class="mb-2"><i class="fas fa-bus me-2" ></i>Bus: Linee 50, 73, 94</li>
-                        </ul> -->
-
-                    </div>
-                </div>
-
-                <!-- <div class="col-lg-6 fade-in visible">
-                    <div >
-                        <div >
-                            <i class="fas fa-map" ></i>
-                            <h5 >Mappa Interattiva</h5>
-                            <p >Studio facilmente raggiungibile nel centro di Milano</p>
-                            <button class="btn btn-outline-primary" onclick="openMap()">
-                                <i class="fas fa-external-link-alt me-2"></i>Apri in Google Maps
-                            </button>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+        <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <a href="https://maps.app.goo.gl/9FLc1XSaRKXaT4wv5">
+                Via XX settembre 16 Gerenzano (VA) presso MSK Studio
+            </a>
         </div>
-    </section>
+
+        <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <a href="https://maps.app.goo.gl/HJUZNXnczihMcHbKA">
+                Via Tiro a segno 5/A Gallarate (VA)
+            </a>
+        </div>
+
+        <div class="mt-3">
+            <a href="#prenota" class="btn btn-primary-custom">
+                <i class="fas fa-calendar-plus me-2"></i>Prenota Ora
+            </a>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="contact-container info-block">
+        <h4 class="mb-3">
+            <i class="fas fa-phone me-2"></i>Contatti
+        </h4>
+
+        <div class="contact-info">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+393458508870">+39 345 8508870</a>
+        </div>
+
+        <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:filipporadice.osteopata@gmail.com">
+                filipporadice.osteopata@gmail.com
+            </a>
+        </div>
+    </div>
+
+</div>
+    <!-- Contacts -->
 
     <!-- Footer -->
     <footer aria-label="footer pagina" class="footer">
@@ -548,19 +458,22 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <h5 class="footer-title">Dr. Filippo Radice</h5>
-                    <p >
+                    <p>
                         Osteopata professionista specializzato in trattamenti personalizzati
                         per il benessere e la salute di tutta la famiglia.
                     </p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#" >
+                        <a href="#">
                             <i class="fab fa-facebook"></i>
+                            Facebook
                         </a>
-                        <a href="#" >
+                        <a href="#">
                             <i class="fab fa-instagram"></i>
+                            Instagram
                         </a>
-                        <a href="#" >
+                        <a href="#">
                             <i class="fab fa-linkedin"></i>
+                            Linkedin
                         </a>
                     </div>
                 </div>
@@ -595,9 +508,9 @@
                 </div>
             </div>
 
-            <hr >
+            <hr>
 
-            <div class="text-center" >
+            <div class="text-center">
                 <p>© 2025 Dr. Filippo Radice - Osteopata. Tutti i diritti riservati.</p>
             </div>
         </div>
@@ -605,167 +518,206 @@
 
     <!-- Specialization Modals -->
     <!-- Modal Dolori Muscolo-scheletrici -->
-    <div class="modal fade" id="modalDoloriMuscolari" tabindex="-1" aria-labelledby="modalDoloriMuscolariLabel" aria-hidden="true">
+    <div class="modal fade" id="modalDoloriMuscolari" tabindex="-1" aria-labelledby="modalDoloriMuscolariLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h5 class="modal-title" id="modalDoloriMuscolariLabel">
                         <i class="fas fa-bone me-2"></i>Dolori Muscolo-scheletrici
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <nav>
+                    <nav aria-label="navigazione">
                         <div class="nav nav-tabs" id="nav-tab-dolori" role="tablist">
-                            <button class="nav-link active" id="nav-dettagli-dolori-tab" data-bs-toggle="tab" data-bs-target="#nav-dettagli-dolori" type="button" role="tab" aria-selected="true">Dettagli</button>
-                            <button class="nav-link" id="nav-processo-dolori-tab" data-bs-toggle="tab" data-bs-target="#nav-processo-dolori" type="button" role="tab" aria-selected="false" tabindex="-1">Processo</button>
-                            <button class="nav-link" id="nav-faq-dolori-tab" data-bs-toggle="tab" data-bs-target="#nav-faq-dolori" type="button" role="tab" aria-selected="false" tabindex="-1">FAQ</button>
+                            <button class="nav-link active" id="nav-dettagli-dolori-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-dettagli-dolori" type="button" role="tab"
+                                aria-selected="true">Dettagli</button>
+                            <button class="nav-link" id="nav-processo-dolori-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-processo-dolori" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">Processo</button>
+                            <button class="nav-link" id="nav-faq-dolori-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-faq-dolori" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">FAQ</button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent-dolori">
-                        <div class="tab-pane fade show active" id="nav-dettagli-dolori" role="tabpanel" aria-labelledby="nav-dettagli-dolori-tab">
+                        <div class="tab-pane fade show active" id="nav-dettagli-dolori" role="tabpanel"
+                            aria-labelledby="nav-dettagli-dolori-tab">
                             <div class="p-4">
-                                <h6 class="mb-3" >Trattamenti Specializzati</h6>
+                                <h6 class="mb-3">Trattamenti Specializzati</h6>
                                 <div class="row g-3 mb-4">
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-check-circle me-2" ></i>
+                                            <i class="fas fa-check-circle me-2"></i>
                                             <strong>Mal di schiena cronico</strong>
                                         </div>
                                         <p class="text-muted small">Lombalgie, sciatalgie, ernie discali</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-check-circle me-2" ></i>
+                                            <i class="fas fa-check-circle me-2"></i>
                                             <strong>Dolori cervicali</strong>
                                         </div>
                                         <p class="text-muted small">Cervicalgie, torcicollo, tensioni</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-check-circle me-2" ></i>
+                                            <i class="fas fa-check-circle me-2"></i>
                                             <strong>Problemi articolari</strong>
                                         </div>
                                         <p class="text-muted small">Spalle, ginocchia, anche, polsi</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-check-circle me-2" ></i>
+                                            <i class="fas fa-check-circle me-2"></i>
                                             <strong>Tensioni posturali</strong>
                                         </div>
                                         <p class="text-muted small">Squilibri da lavoro sedentario</p>
                                     </div>
                                 </div>
-                                <h6 class="mb-3" >Approccio Terapeutico</h6>
-                                <p>Il mio approccio ai dolori muscolo-scheletrici si basa su una valutazione globale della persona. Non mi limito a trattare il sintomo, ma ricerco le cause profonde del disagio attraverso:</p>
+                                <h6 class="mb-3">Approccio Terapeutico</h6>
+                                <p>Il mio approccio ai dolori muscolo-scheletrici si basa su una valutazione globale
+                                    della persona. Non mi limito a trattare il sintomo, ma ricerco le cause profonde del
+                                    disagio attraverso:</p>
                                 <ul>
-                                    <li><strong>Analisi posturale completa:</strong> Valutazione di tutto il sistema muscolo-scheletrico</li>
-                                    <li><strong>Tecniche manuali specifiche:</strong> Manipolazioni dolci e mobilizzazioni articolari</li>
-                                    <li><strong>Terapia dei tessuti molli:</strong> Rilascio delle tensioni muscolari e fasciali</li>
-                                    <li><strong>Educazione del paziente:</strong> Consigli per la prevenzione e l'auto-trattamento</li>
+                                    <li><strong>Analisi posturale completa:</strong> Valutazione di tutto il sistema
+                                        muscolo-scheletrico</li>
+                                    <li><strong>Tecniche manuali specifiche:</strong> Manipolazioni dolci e
+                                        mobilizzazioni articolari</li>
+                                    <li><strong>Terapia dei tessuti molli:</strong> Rilascio delle tensioni muscolari e
+                                        fasciali</li>
+                                    <li><strong>Educazione del paziente:</strong> Consigli per la prevenzione e
+                                        l'auto-trattamento</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-processo-dolori" role="tabpanel" aria-labelledby="nav-processo-dolori-tab">
+                        <div class="tab-pane fade" id="nav-processo-dolori" role="tabpanel"
+                            aria-labelledby="nav-processo-dolori-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Il Percorso di Trattamento</h6>
+                                <h6 class="mb-4">Il Percorso di Trattamento</h6>
                                 <div class="row g-4">
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >1</div>
+                                                <div>1</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Valutazione Iniziale (60 minuti)</h6>
-                                                <p class="text-muted">Anamnesi dettagliata, esame fisico, test ortopedici e neurologici. Identificazione delle cause primarie del dolore.</p>
+                                                <p class="text-muted">Anamnesi dettagliata, esame fisico, test
+                                                    ortopedici e neurologici. Identificazione delle cause primarie del
+                                                    dolore.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >2</div>
+                                                <div>2</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Piano di Trattamento Personalizzato</h6>
-                                                <p class="text-muted">Definizione degli obiettivi terapeutici e del numero di sedute necessarie in base alla condizione specifica.</p>
+                                                <p class="text-muted">Definizione degli obiettivi terapeutici e del
+                                                    numero di sedute necessarie in base alla condizione specifica.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >3</div>
+                                                <div>3</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Trattamenti Osteopatici (45 minuti)</h6>
-                                                <p class="text-muted">Tecniche manuali mirate: manipolazioni articolari, rilascio miofasciale, tecniche cranio-sacrali quando necessarie.</p>
+                                                <p class="text-muted">Tecniche manuali mirate: manipolazioni articolari,
+                                                    rilascio miofasciale, tecniche cranio-sacrali quando necessarie.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >4</div>
+                                                <div>4</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Follow-up e Prevenzione</h6>
-                                                <p class="text-muted">Monitoraggio dei progressi, esercizi specifici per il mantenimento e consigli per prevenire ricadute.</p>
+                                                <p class="text-muted">Monitoraggio dei progressi, esercizi specifici per
+                                                    il mantenimento e consigli per prevenire ricadute.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-faq-dolori" role="tabpanel" aria-labelledby="nav-faq-dolori-tab">
+                        <div class="tab-pane fade" id="nav-faq-dolori" role="tabpanel"
+                            aria-labelledby="nav-faq-dolori-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Domande Frequenti</h6>
+                                <h6 class="mb-4">Domande Frequenti</h6>
                                 <div class="accordion" id="accordionDolori">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingDolori1">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDolori1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseDolori1">
                                                 Quante sedute sono necessarie per vedere miglioramenti?
                                             </button>
                                         </h2>
-                                        <div id="collapseDolori1" class="accordion-collapse collapse show" data-bs-parent="#accordionDolori">
+                                        <div id="collapseDolori1" class="accordion-collapse collapse show"
+                                            data-bs-parent="#accordionDolori">
                                             <div class="accordion-body">
-                                                Generalmente si osservano i primi miglioramenti già dalla prima seduta. Per problemi acuti, 2-4 sedute possono essere sufficienti. Per condizioni croniche, il percorso può richiedere 6-8 trattamenti distribuiti nel tempo.
+                                                Generalmente si osservano i primi miglioramenti già dalla prima seduta.
+                                                Per problemi acuti, 2-4 sedute possono essere sufficienti. Per
+                                                condizioni croniche, il percorso può richiedere 6-8 trattamenti
+                                                distribuiti nel tempo.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingDolori2">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDolori2">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseDolori2">
                                                 Il trattamento osteopatico è doloroso?
                                             </button>
                                         </h2>
-                                        <div id="collapseDolori2" class="accordion-collapse collapse" data-bs-parent="#accordionDolori">
+                                        <div id="collapseDolori2" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionDolori">
                                             <div class="accordion-body">
-                                                Le tecniche osteopatiche sono generalmente dolci e ben tollerate. Potresti avvertire un leggero fastidio durante alcune manovre, ma mai dolore intenso. Comunico sempre con il paziente durante il trattamento.
+                                                Le tecniche osteopatiche sono generalmente dolci e ben tollerate.
+                                                Potresti avvertire un leggero fastidio durante alcune manovre, ma mai
+                                                dolore intenso. Comunico sempre con il paziente durante il trattamento.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingDolori3">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDolori3">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseDolori3">
                                                 Posso continuare le mie attività normali dopo il trattamento?
                                             </button>
                                         </h2>
-                                        <div id="collapseDolori3" class="accordion-collapse collapse" data-bs-parent="#accordionDolori">
+                                        <div id="collapseDolori3" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionDolori">
                                             <div class="accordion-body">
-                                                Sì, nella maggior parte dei casi puoi riprendere immediatamente le attività quotidiane. Ti fornirò sempre indicazioni specifiche su eventuali precauzioni da prendere nelle 24-48 ore successive.
+                                                Sì, nella maggior parte dei casi puoi riprendere immediatamente le
+                                                attività quotidiane. Ti fornirò sempre indicazioni specifiche su
+                                                eventuali precauzioni da prendere nelle 24-48 ore successive.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingDolori4">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDolori4">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseDolori4">
                                                 L'osteopatia può sostituire la fisioterapia?
                                             </button>
                                         </h2>
-                                        <div id="collapseDolori4" class="accordion-collapse collapse" data-bs-parent="#accordionDolori">
+                                        <div id="collapseDolori4" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionDolori">
                                             <div class="accordion-body">
-                                                Osteopatia e fisioterapia sono complementari. L'osteopatia agisce sulle cause profonde e sui compensi, mentre la fisioterapia rinforza e rieduca. Spesso consiglio un approccio integrato per risultati ottimali.
+                                                Osteopatia e fisioterapia sono complementari. L'osteopatia agisce sulle
+                                                cause profonde e sui compensi, mentre la fisioterapia rinforza e
+                                                rieduca. Spesso consiglio un approccio integrato per risultati ottimali.
                                             </div>
                                         </div>
                                     </div>
@@ -776,7 +728,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(dolori-muscolari)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom"
+                        onclick="prenotaSpecializzazione(dolori-muscolari)" data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Dolori Muscolo-scheletrici
                     </button>
                 </div>
@@ -785,188 +738,228 @@
     </div>
 
     <!-- Modal Approccio Sportivo -->
-    <div class="modal fade" id="modalApproccioSportivo" tabindex="-1" aria-labelledby="modalApproccioSportivoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalApproccioSportivo" tabindex="-1" aria-labelledby="modalApproccioSportivoLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h5 class="modal-title" id="modalApproccioSportivoLabel">
                         <i class="fas fa-running me-2"></i>Approccio Sportivo
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab-sport" role="tablist">
-                            <button class="nav-link active" id="nav-dettagli-sport-tab" data-bs-toggle="tab" data-bs-target="#nav-dettagli-sport" type="button" role="tab" aria-selected="true">Dettagli</button>
-                            <button class="nav-link" id="nav-processo-sport-tab" data-bs-toggle="tab" data-bs-target="#nav-processo-sport" type="button" role="tab" aria-selected="false" tabindex="-1">Processo</button>
-                            <button class="nav-link" id="nav-faq-sport-tab" data-bs-toggle="tab" data-bs-target="#nav-faq-sport" type="button" role="tab" aria-selected="false" tabindex="-1">FAQ</button>
+                            <button class="nav-link active" id="nav-dettagli-sport-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-dettagli-sport" type="button" role="tab"
+                                aria-selected="true">Dettagli</button>
+                            <button class="nav-link" id="nav-processo-sport-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-processo-sport" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">Processo</button>
+                            <button class="nav-link" id="nav-faq-sport-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-faq-sport" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">FAQ</button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent-sport">
-                        <div class="tab-pane fade show active" id="nav-dettagli-sport" role="tabpanel" aria-labelledby="nav-dettagli-sport-tab">
+                        <div class="tab-pane fade show active" id="nav-dettagli-sport" role="tabpanel"
+                            aria-labelledby="nav-dettagli-sport-tab">
                             <div class="p-4">
-                                <h6 class="mb-3" >Specializzazioni Sportive</h6>
+                                <h6 class="mb-3">Specializzazioni Sportive</h6>
                                 <div class="row g-3 mb-4">
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-running me-2" ></i>
+                                            <i class="fas fa-running me-2"></i>
                                             <strong>Running e Atletica</strong>
                                         </div>
-                                        <p class="text-muted small">Prevenzione infortuni, ottimizzazione biomeccanica</p>
+                                        <p class="text-muted small">Prevenzione infortuni, ottimizzazione biomeccanica
+                                        </p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-futbol me-2" ></i>
+                                            <i class="fas fa-futbol me-2"></i>
                                             <strong>Sport di Squadra</strong>
                                         </div>
                                         <p class="text-muted small">Calcio, basket, pallavolo, rugby</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-swimmer me-2" ></i>
+                                            <i class="fas fa-swimmer me-2"></i>
                                             <strong>Sport Acquatici</strong>
                                         </div>
                                         <p class="text-muted small">Nuoto, pallanuoto, immersioni</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-bicycle me-2" ></i>
+                                            <i class="fas fa-bicycle me-2"></i>
                                             <strong>Ciclismo e Endurance</strong>
                                         </div>
                                         <p class="text-muted small">Postura in sella, prevenzione sovraccarichi</p>
                                     </div>
                                 </div>
-                                <h6 class="mb-3" >Il Metodo per l'Atleta</h6>
+                                <h6 class="mb-3">Il Metodo per l'Atleta</h6>
                                 <p>L'approccio osteopatico sportivo si concentra su tre pilastri fondamentali:</p>
                                 <div class="row g-3">
                                     <div class="col-md-4">
-                                        <div class="text-center p-3" >
-                                            <i class="fas fa-shield-alt" ></i>
+                                        <div class="text-center p-3">
+                                            <i class="fas fa-shield-alt"></i>
                                             <h6>Prevenzione</h6>
-                                            <p class="small text-muted">Identificazione precoce di squilibri e compensi che potrebbero portare a infortuni</p>
+                                            <p class="small text-muted">Identificazione precoce di squilibri e compensi
+                                                che potrebbero portare a infortuni</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="text-center p-3" >
-                                            <i class="fas fa-heartbeat" ></i>
+                                        <div class="text-center p-3">
+                                            <i class="fas fa-heartbeat"></i>
                                             <h6>Recupero</h6>
-                                            <p class="small text-muted">Trattamento rapido ed efficace di infortuni per un ritorno sicuro all'attività</p>
+                                            <p class="small text-muted">Trattamento rapido ed efficace di infortuni per
+                                                un ritorno sicuro all'attività</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="text-center p-3" >
-                                            <i class="fas fa-chart-line" ></i>
+                                        <div class="text-center p-3">
+                                            <i class="fas fa-chart-line"></i>
                                             <h6>Performance</h6>
-                                            <p class="small text-muted">Ottimizzazione della funzione corporea per migliorare le prestazioni sportive</p>
+                                            <p class="small text-muted">Ottimizzazione della funzione corporea per
+                                                migliorare le prestazioni sportive</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-processo-sport" role="tabpanel" aria-labelledby="nav-processo-sport-tab">
+                        <div class="tab-pane fade" id="nav-processo-sport" role="tabpanel"
+                            aria-labelledby="nav-processo-sport-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Percorso per l'Atleta</h6>
+                                <h6 class="mb-4">Percorso per l'Atleta</h6>
                                 <div class="row g-4">
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >1</div>
+                                                <div>1</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Anamnesi Sportiva Specializzata</h6>
-                                                <p class="text-muted">Analisi della disciplina praticata, frequenza allenamenti, storia di infortuni precedenti, obiettivi sportivi specifici.</p>
+                                                <p class="text-muted">Analisi della disciplina praticata, frequenza
+                                                    allenamenti, storia di infortuni precedenti, obiettivi sportivi
+                                                    specifici.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >2</div>
+                                                <div>2</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Valutazione Biomeccanica</h6>
-                                                <p class="text-muted">Test specifici per il gesto atletico, analisi delle catene cinetiche, valutazione dell'equilibrio e della coordinazione.</p>
+                                                <p class="text-muted">Test specifici per il gesto atletico, analisi
+                                                    delle catene cinetiche, valutazione dell'equilibrio e della
+                                                    coordinazione.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >3</div>
+                                                <div>3</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Trattamento Sport-Specifico</h6>
-                                                <p class="text-muted">Tecniche mirate alle esigenze dell'atleta: rilascio miofasciale, mobilizzazioni articolari, tecniche di energia muscolare.</p>
+                                                <p class="text-muted">Tecniche mirate alle esigenze dell'atleta:
+                                                    rilascio miofasciale, mobilizzazioni articolari, tecniche di energia
+                                                    muscolare.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >4</div>
+                                                <div>4</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Programma di Mantenimento</h6>
-                                                <p class="text-muted">Esercizi specifici, consigli per la preparazione atletica, protocolli di riscaldamento e defaticamento personalizzati.</p>
+                                                <p class="text-muted">Esercizi specifici, consigli per la preparazione
+                                                    atletica, protocolli di riscaldamento e defaticamento
+                                                    personalizzati.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="alert alert-info mt-4">
                                     <i class="fas fa-info-circle me-2"></i>
-                                    <strong>Collaborazione con il Team:</strong> Lavoro in sinergia con preparatori atletici, fisioterapisti e medici sportivi per un approccio integrato.
+                                    <strong>Collaborazione con il Team:</strong> Lavoro in sinergia con preparatori
+                                    atletici, fisioterapisti e medici sportivi per un approccio integrato.
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-faq-sport" role="tabpanel" aria-labelledby="nav-faq-sport-tab">
+                        <div class="tab-pane fade" id="nav-faq-sport" role="tabpanel"
+                            aria-labelledby="nav-faq-sport-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >FAQ per Atleti</h6>
+                                <h6 class="mb-4">FAQ per Atleti</h6>
                                 <div class="accordion" id="accordionSport">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSport1">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSport1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseSport1">
                                                 Quando dovrei fare una visita preventiva?
                                             </button>
                                         </h2>
-                                        <div id="collapseSport1" class="accordion-collapse collapse show" data-bs-parent="#accordionSport">
+                                        <div id="collapseSport1" class="accordion-collapse collapse show"
+                                            data-bs-parent="#accordionSport">
                                             <div class="accordion-body">
-                                                Consiglio una valutazione all'inizio della stagione sportiva e ogni 3-4 mesi per atleti agonisti. Per amatori, una volta all'anno o in presenza di fastidi anche lievi.
+                                                Consiglio una valutazione all'inizio della stagione sportiva e ogni 3-4
+                                                mesi per atleti agonisti. Per amatori, una volta all'anno o in presenza
+                                                di fastidi anche lievi.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSport2">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSport2">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseSport2">
                                                 Posso allenarmi dopo il trattamento?
                                             </button>
                                         </h2>
-                                        <div id="collapseSport2" class="accordion-collapse collapse" data-bs-parent="#accordionSport">
+                                        <div id="collapseSport2" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionSport">
                                             <div class="accordion-body">
-                                                Dipende dal tipo di trattamento. Generalmente consiglio 24-48 ore di riposo o allenamento leggero. Ti fornirò sempre indicazioni specifiche per il tuo caso.
+                                                Dipende dal tipo di trattamento. Generalmente consiglio 24-48 ore di
+                                                riposo o allenamento leggero. Ti fornirò sempre indicazioni specifiche
+                                                per il tuo caso.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSport3">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSport3">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseSport3">
                                                 L'osteopatia può migliorare le prestazioni?
                                             </button>
                                         </h2>
-                                        <div id="collapseSport3" class="accordion-collapse collapse" data-bs-parent="#accordionSport">
+                                        <div id="collapseSport3" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionSport">
                                             <div class="accordion-body">
-                                                Assolutamente sì. Ottimizzando la biomeccanica e riducendo le tensioni, l'osteopatia può migliorare l'efficienza del movimento e quindi le performance sportive.
+                                                Assolutamente sì. Ottimizzando la biomeccanica e riducendo le tensioni,
+                                                l'osteopatia può migliorare l'efficienza del movimento e quindi le
+                                                performance sportive.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSport4">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSport4">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseSport4">
                                                 Collaborate con altri professionisti?
                                             </button>
                                         </h2>
-                                        <div id="collapseSport4" class="accordion-collapse collapse" data-bs-parent="#accordionSport">
+                                        <div id="collapseSport4" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionSport">
                                             <div class="accordion-body">
-                                                Sì, lavoro in team con preparatori atletici, fisioterapisti, nutrizionisti e medici sportivi. L'approccio multidisciplinare è fondamentale per l'atleta.
+                                                Sì, lavoro in team con preparatori atletici, fisioterapisti,
+                                                nutrizionisti e medici sportivi. L'approccio multidisciplinare è
+                                                fondamentale per l'atleta.
                                             </div>
                                         </div>
                                     </div>
@@ -977,7 +970,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(approccio-sportivo)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom"
+                        onclick="prenotaSpecializzazione(approccio-sportivo)" data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Approccio Sportivo
                     </button>
                 </div>
@@ -989,176 +983,218 @@
     <div class="modal fade" id="modalCefalee" tabindex="-1" aria-labelledby="modalCefaleeLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h5 class="modal-title" id="modalCefaleeLabel">
                         <i class="fas fa-brain me-2"></i>Cefalee e Vertigini
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab-cefalee" role="tablist">
-                            <button class="nav-link active" id="nav-dettagli-cefalee-tab" data-bs-toggle="tab" data-bs-target="#nav-dettagli-cefalee" type="button" role="tab" aria-selected="true">Dettagli</button>
-                            <button class="nav-link" id="nav-processo-cefalee-tab" data-bs-toggle="tab" data-bs-target="#nav-processo-cefalee" type="button" role="tab" aria-selected="false" tabindex="-1">Processo</button>
-                            <button class="nav-link" id="nav-faq-cefalee-tab" data-bs-toggle="tab" data-bs-target="#nav-faq-cefalee" type="button" role="tab" aria-selected="false" tabindex="-1">FAQ</button>
+                            <button class="nav-link active" id="nav-dettagli-cefalee-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-dettagli-cefalee" type="button" role="tab"
+                                aria-selected="true">Dettagli</button>
+                            <button class="nav-link" id="nav-processo-cefalee-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-processo-cefalee" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">Processo</button>
+                            <button class="nav-link" id="nav-faq-cefalee-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-faq-cefalee" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">FAQ</button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent-cefalee">
-                        <div class="tab-pane fade show active" id="nav-dettagli-cefalee" role="tabpanel" aria-labelledby="nav-dettagli-cefalee-tab">
+                        <div class="tab-pane fade show active" id="nav-dettagli-cefalee" role="tabpanel"
+                            aria-labelledby="nav-dettagli-cefalee-tab">
                             <div class="p-4">
                                 <div class="alert alert-success mb-4">
                                     <i class="fas fa-lightbulb me-2"></i>
-                                    <strong>Mal di testa? Vertigini? Non sono un destino.</strong> La soluzione è più vicina di quanto pensi.
+                                    <strong>Mal di testa? Vertigini? Non sono un destino.</strong> La soluzione è più
+                                    vicina di quanto pensi.
                                 </div>
-                                <h6 class="mb-3" >Tipologie di Disturbi Trattati</h6>
+                                <h6 class="mb-3">Tipologie di Disturbi Trattati</h6>
                                 <div class="row g-3 mb-4">
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-bolt me-2" ></i>
+                                            <i class="fas fa-bolt me-2"></i>
                                             <strong>Cefalee Tensive</strong>
                                         </div>
                                         <p class="text-muted small">Mal di testa da tensione muscolare cervicale</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-dizzy me-2" ></i>
+                                            <i class="fas fa-dizzy me-2"></i>
                                             <strong>Emicranie</strong>
                                         </div>
-                                        <p class="text-muted small">Trattamento delle componenti muscolo-scheletriche</p>
+                                        <p class="text-muted small">Trattamento delle componenti muscolo-scheletriche
+                                        </p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-sync-alt me-2" ></i>
+                                            <i class="fas fa-sync-alt me-2"></i>
                                             <strong>Vertigini Posizionali</strong>
                                         </div>
                                         <p class="text-muted small">Disturbi dell'equilibrio di origine cervicale</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-compress me-2" ></i>
+                                            <i class="fas fa-compress me-2"></i>
                                             <strong>Cefalee Cervicogeniche</strong>
                                         </div>
                                         <p class="text-muted small">Mal di testa originati dalla cervicale</p>
                                     </div>
                                 </div>
-                                <h6 class="mb-3" >Approccio Terapeutico Integrato</h6>
+                                <h6 class="mb-3">Approccio Terapeutico Integrato</h6>
                                 <p>Il trattamento osteopatico per cefalee e vertigini si basa su:</p>
                                 <ul>
-                                    <li><strong>Tecniche cranio-sacrali:</strong> Rilascio delle tensioni delle membrane intracraniche</li>
-                                    <li><strong>Mobilizzazioni cervicali:</strong> Ripristino della mobilità delle vertebre cervicali superiori</li>
-                                    <li><strong>Trattamento miofasciale:</strong> Rilassamento dei muscoli suboccipitali e cervicali</li>
-                                    <li><strong>Riequilibrio posturale:</strong> Correzione degli squilibri che mantengono le tensioni</li>
+                                    <li><strong>Tecniche cranio-sacrali:</strong> Rilascio delle tensioni delle membrane
+                                        intracraniche</li>
+                                    <li><strong>Mobilizzazioni cervicali:</strong> Ripristino della mobilità delle
+                                        vertebre cervicali superiori</li>
+                                    <li><strong>Trattamento miofasciale:</strong> Rilassamento dei muscoli suboccipitali
+                                        e cervicali</li>
+                                    <li><strong>Riequilibrio posturale:</strong> Correzione degli squilibri che
+                                        mantengono le tensioni</li>
                                 </ul>
-                                <div class="mt-4 p-3" >
+                                <div class="mt-4 p-3">
                                     <h6>Importante:</h6>
-                                    <p class="mb-0">L'osteopatia è efficace per le cefalee di origine muscolo-scheletrica. Lavoro sempre in collaborazione con neurologi per una diagnosi differenziale accurata.</p>
+                                    <p class="mb-0">L'osteopatia è efficace per le cefalee di origine
+                                        muscolo-scheletrica. Lavoro sempre in collaborazione con neurologi per una
+                                        diagnosi differenziale accurata.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-processo-cefalee" role="tabpanel" aria-labelledby="nav-processo-cefalee-tab">
+                        <div class="tab-pane fade" id="nav-processo-cefalee" role="tabpanel"
+                            aria-labelledby="nav-processo-cefalee-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Percorso Terapeutico Specializzato</h6>
+                                <h6 class="mb-4">Percorso Terapeutico Specializzato</h6>
                                 <div class="row g-4">
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >1</div>
+                                                <div>1</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Anamnesi Dettagliata</h6>
-                                                <p class="text-muted">Caratteristiche del dolore, frequenza, fattori scatenanti, storia familiare. Diario delle cefalee se necessario.</p>
+                                                <p class="text-muted">Caratteristiche del dolore, frequenza, fattori
+                                                    scatenanti, storia familiare. Diario delle cefalee se necessario.
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >2</div>
+                                                <div>2</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Valutazione Cranio-Cervicale</h6>
-                                                <p class="text-muted">Esame della mobilità cervicale, test neurologici, palpazione delle strutture craniche e valutazione posturale.</p>
+                                                <p class="text-muted">Esame della mobilità cervicale, test neurologici,
+                                                    palpazione delle strutture craniche e valutazione posturale.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >3</div>
+                                                <div>3</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Trattamento Mirato</h6>
-                                                <p class="text-muted">Tecniche cranio-sacrali, mobilizzazioni cervicali dolci, rilascio dei trigger points, riequilibrio fasciale.</p>
+                                                <p class="text-muted">Tecniche cranio-sacrali, mobilizzazioni cervicali
+                                                    dolci, rilascio dei trigger points, riequilibrio fasciale.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >4</div>
+                                                <div>4</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Educazione e Prevenzione</h6>
-                                                <p class="text-muted">Esercizi per la cervicale, consigli ergonomici, tecniche di rilassamento, gestione dello stress.</p>
+                                                <p class="text-muted">Esercizi per la cervicale, consigli ergonomici,
+                                                    tecniche di rilassamento, gestione dello stress.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="alert alert-warning mt-4">
                                     <i class="fas fa-exclamation-triangle me-2"></i>
-                                    <strong>Attenzione:</strong> In caso di cefalee improvvise e intense, alterazioni neurologiche o peggioramento dei sintomi, è fondamentale un consulto medico immediato.
+                                    <strong>Attenzione:</strong> In caso di cefalee improvvise e intense, alterazioni
+                                    neurologiche o peggioramento dei sintomi, è fondamentale un consulto medico
+                                    immediato.
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-faq-cefalee" role="tabpanel" aria-labelledby="nav-faq-cefalee-tab">
+                        <div class="tab-pane fade" id="nav-faq-cefalee" role="tabpanel"
+                            aria-labelledby="nav-faq-cefalee-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Domande su Cefalee e Vertigini</h6>
+                                <h6 class="mb-4">Domande su Cefalee e Vertigini</h6>
                                 <div class="accordion" id="accordionCefalee">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingCefalee1">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCefalee1">
-                                                Come faccio a sapere se il mio mal di testa è trattabile con l'osteopatia?
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseCefalee1">
+                                                Come faccio a sapere se il mio mal di testa è trattabile con
+                                                l'osteopatia?
                                             </button>
                                         </h2>
-                                        <div id="collapseCefalee1" class="accordion-collapse collapse show" data-bs-parent="#accordionCefalee">
+                                        <div id="collapseCefalee1" class="accordion-collapse collapse show"
+                                            data-bs-parent="#accordionCefalee">
                                             <div class="accordion-body">
-                                                Se il mal di testa è associato a tensioni cervicali, peggiora con certi movimenti del collo, o è accompagnato da rigidità muscolare, l'osteopatia può essere molto efficace.
+                                                Se il mal di testa è associato a tensioni cervicali, peggiora con certi
+                                                movimenti del collo, o è accompagnato da rigidità muscolare,
+                                                l'osteopatia può essere molto efficace.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingCefalee2">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCefalee2">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseCefalee2">
                                                 Quante sedute servono per le cefalee?
                                             </button>
                                         </h2>
-                                        <div id="collapseCefalee2" class="accordion-collapse collapse" data-bs-parent="#accordionCefalee">
+                                        <div id="collapseCefalee2" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionCefalee">
                                             <div class="accordion-body">
-                                                Per cefalee acute, spesso 2-3 sedute sono sufficienti. Per forme croniche, il percorso può richiedere 6-8 trattamenti con sedute di mantenimento periodiche.
+                                                Per cefalee acute, spesso 2-3 sedute sono sufficienti. Per forme
+                                                croniche, il percorso può richiedere 6-8 trattamenti con sedute di
+                                                mantenimento periodiche.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingCefalee3">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCefalee3">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseCefalee3">
                                                 Le tecniche cranio-sacrali sono sicure?
                                             </button>
                                         </h2>
-                                        <div id="collapseCefalee3" class="accordion-collapse collapse" data-bs-parent="#accordionCefalee">
+                                        <div id="collapseCefalee3" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionCefalee">
                                             <div class="accordion-body">
-                                                Assolutamente sì. Sono tecniche molto dolci che utilizzano una pressione leggera, simile al peso di una moneta. Non comportano rischi e sono ben tollerate da tutti.
+                                                Assolutamente sì. Sono tecniche molto dolci che utilizzano una pressione
+                                                leggera, simile al peso di una moneta. Non comportano rischi e sono ben
+                                                tollerate da tutti.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingCefalee4">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCefalee4">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseCefalee4">
                                                 Posso ridurre i farmaci per il mal di testa?
                                             </button>
                                         </h2>
-                                        <div id="collapseCefalee4" class="accordion-collapse collapse" data-bs-parent="#accordionCefalee">
+                                        <div id="collapseCefalee4" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionCefalee">
                                             <div class="accordion-body">
-                                                Molti pazienti riducono significativamente l'uso di antidolorifici. Tuttavia, qualsiasi modifica della terapia farmacologica deve essere sempre concordata con il medico curante.
+                                                Molti pazienti riducono significativamente l'uso di antidolorifici.
+                                                Tuttavia, qualsiasi modifica della terapia farmacologica deve essere
+                                                sempre concordata con il medico curante.
                                             </div>
                                         </div>
                                     </div>
@@ -1169,7 +1205,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(cefalee)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(cefalee)"
+                        data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Cefalee e Vertigini
                     </button>
                 </div>
@@ -1178,192 +1215,233 @@
     </div>
 
     <!-- Modal Osteopatia Pediatrica -->
-    <div class="modal fade" id="modalPediatrico" tabindex="-1" aria-labelledby="modalPediatricoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalPediatrico" tabindex="-1" aria-labelledby="modalPediatricoLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h5 class="modal-title" id="modalPediatricoLabel">
                         <i class="fas fa-child me-2"></i>Osteopatia Pediatrica
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab-pediatrico" role="tablist">
-                            <button class="nav-link active" id="nav-dettagli-pediatrico-tab" data-bs-toggle="tab" data-bs-target="#nav-dettagli-pediatrico" type="button" role="tab" aria-selected="true">Dettagli</button>
-                            <button class="nav-link" id="nav-processo-pediatrico-tab" data-bs-toggle="tab" data-bs-target="#nav-processo-pediatrico" type="button" role="tab" aria-selected="false" tabindex="-1">Processo</button>
-                            <button class="nav-link" id="nav-faq-pediatrico-tab" data-bs-toggle="tab" data-bs-target="#nav-faq-pediatrico" type="button" role="tab" aria-selected="false" tabindex="-1">FAQ</button>
+                            <button class="nav-link active" id="nav-dettagli-pediatrico-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-dettagli-pediatrico" type="button" role="tab"
+                                aria-selected="true">Dettagli</button>
+                            <button class="nav-link" id="nav-processo-pediatrico-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-processo-pediatrico" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">Processo</button>
+                            <button class="nav-link" id="nav-faq-pediatrico-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-faq-pediatrico" type="button" role="tab" aria-selected="false"
+                                tabindex="-1">FAQ</button>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent-pediatrico">
-                        <div class="tab-pane fade show active" id="nav-dettagli-pediatrico" role="tabpanel" aria-labelledby="nav-dettagli-pediatrico-tab">
+                        <div class="tab-pane fade show active" id="nav-dettagli-pediatrico" role="tabpanel"
+                            aria-labelledby="nav-dettagli-pediatrico-tab">
                             <div class="p-4">
                                 <div class="alert alert-info mb-4">
                                     <i class="fas fa-heart me-2"></i>
-                                    <strong>Cura delicata per i più piccoli.</strong> Un approccio gentile per supportare la crescita e il benessere dei bambini.
+                                    <strong>Cura delicata per i più piccoli.</strong> Un approccio gentile per
+                                    supportare la crescita e il benessere dei bambini.
                                 </div>
-                                <h6 class="mb-3" >Fasce d'Età e Disturbi Trattati</h6>
+                                <h6 class="mb-3">Fasce d'Età e Disturbi Trattati</h6>
                                 <div class="row g-3 mb-4">
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-baby me-2" ></i>
+                                            <i class="fas fa-baby me-2"></i>
                                             <strong>Bambini (3-10 anni)</strong>
                                         </div>
-                                        <p class="text-muted small">Mal di testa, disturbi del sonno, problemi posturali</p>
+                                        <p class="text-muted small">Mal di testa, disturbi del sonno, problemi posturali
+                                        </p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-child me-2" ></i>
+                                            <i class="fas fa-child me-2"></i>
                                             <strong>Adolescenti (11-17 anni)</strong>
                                         </div>
                                         <p class="text-muted small">Scoliosi, dolori di crescita, problemi sportivi</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-graduation-cap me-2" ></i>
+                                            <i class="fas fa-graduation-cap me-2"></i>
                                             <strong>Età Scolare</strong>
                                         </div>
-                                        <p class="text-muted small">Problemi posturali da zaino pesante, stress scolastico</p>
+                                        <p class="text-muted small">Problemi posturali da zaino pesante, stress
+                                            scolastico</p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-running me-2" ></i>
+                                            <i class="fas fa-running me-2"></i>
                                             <strong>Giovani Atleti</strong>
                                         </div>
-                                        <p class="text-muted small">Prevenzione infortuni, ottimizzazione performance</p>
+                                        <p class="text-muted small">Prevenzione infortuni, ottimizzazione performance
+                                        </p>
                                     </div>
                                 </div>
-                                <h6 class="mb-3" >Approccio Specializzato per l'Età Evolutiva</h6>
+                                <h6 class="mb-3">Approccio Specializzato per l'Età Evolutiva</h6>
                                 <p>L'osteopatia pediatrica richiede competenze specifiche e un approccio delicato:</p>
                                 <div class="row g-3">
                                     <div class="col-md-4">
-                                        <div class="text-center p-3" >
-                                            <i class="fas fa-hands-helping" ></i>
+                                        <div class="text-center p-3">
+                                            <i class="fas fa-hands-helping"></i>
                                             <h6>Tecniche Dolci</h6>
-                                            <p class="small text-muted">Pressioni leggere e manovre delicate, adatte alla sensibilità infantile</p>
+                                            <p class="small text-muted">Pressioni leggere e manovre delicate, adatte
+                                                alla sensibilità infantile</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="text-center p-3" >
-                                            <i class="fas fa-comments" ></i>
+                                        <div class="text-center p-3">
+                                            <i class="fas fa-comments"></i>
                                             <h6>Comunicazione</h6>
-                                            <p class="small text-muted">Linguaggio adatto all'età, coinvolgimento dei genitori, ambiente sereno</p>
+                                            <p class="small text-muted">Linguaggio adatto all'età, coinvolgimento dei
+                                                genitori, ambiente sereno</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="text-center p-3" >
-                                            <i class="fas fa-seedling" ></i>
+                                        <div class="text-center p-3">
+                                            <i class="fas fa-seedling"></i>
                                             <h6>Crescita</h6>
-                                            <p class="small text-muted">Supporto al corretto sviluppo muscolo-scheletrico e neurologico</p>
+                                            <p class="small text-muted">Supporto al corretto sviluppo
+                                                muscolo-scheletrico e neurologico</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-processo-pediatrico" role="tabpanel" aria-labelledby="nav-processo-pediatrico-tab">
+                        <div class="tab-pane fade" id="nav-processo-pediatrico" role="tabpanel"
+                            aria-labelledby="nav-processo-pediatrico-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Il Percorso per Bambini e Adolescenti</h6>
+                                <h6 class="mb-4">Il Percorso per Bambini e Adolescenti</h6>
                                 <div class="row g-4">
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >1</div>
+                                                <div>1</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Accoglienza Famiglia</h6>
-                                                <p class="text-muted">Colloquio con i genitori, anamnesi dello sviluppo, osservazione del bambino in ambiente sereno e familiare.</p>
+                                                <p class="text-muted">Colloquio con i genitori, anamnesi dello sviluppo,
+                                                    osservazione del bambino in ambiente sereno e familiare.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >2</div>
+                                                <div>2</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Valutazione Giocosa</h6>
-                                                <p class="text-muted">Esame posturale attraverso il gioco, test di mobilità adatti all'età, valutazione dello sviluppo neuromotorio.</p>
+                                                <p class="text-muted">Esame posturale attraverso il gioco, test di
+                                                    mobilità adatti all'età, valutazione dello sviluppo neuromotorio.
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >3</div>
+                                                <div>3</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Trattamento Delicato</h6>
-                                                <p class="text-muted">Tecniche osteopatiche dolci, durata ridotta (20-30 min), presenza del genitore, pausa se necessario.</p>
+                                                <p class="text-muted">Tecniche osteopatiche dolci, durata ridotta (20-30
+                                                    min), presenza del genitore, pausa se necessario.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <div >4</div>
+                                                <div>4</div>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h6>Consigli per la Famiglia</h6>
-                                                <p class="text-muted">Esercizi ludici, consigli posturali per scuola e casa, supporto per lo sviluppo armonico.</p>
+                                                <p class="text-muted">Esercizi ludici, consigli posturali per scuola e
+                                                    casa, supporto per lo sviluppo armonico.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="alert alert-success mt-4">
                                     <i class="fas fa-users me-2"></i>
-                                    <strong>Collaborazione Multidisciplinare:</strong> Lavoro in team con pediatri, fisioterapisti, psicologi e insegnanti per un approccio completo al benessere del bambino.
+                                    <strong>Collaborazione Multidisciplinare:</strong> Lavoro in team con pediatri,
+                                    fisioterapisti, psicologi e insegnanti per un approccio completo al benessere del
+                                    bambino.
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-faq-pediatrico" role="tabpanel" aria-labelledby="nav-faq-pediatrico-tab">
+                        <div class="tab-pane fade" id="nav-faq-pediatrico" role="tabpanel"
+                            aria-labelledby="nav-faq-pediatrico-tab">
                             <div class="p-4">
-                                <h6 class="mb-4" >Domande dei Genitori</h6>
+                                <h6 class="mb-4">Domande dei Genitori</h6>
                                 <div class="accordion" id="accordionPediatrico">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingPediatrico1">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePediatrico1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapsePediatrico1">
                                                 A che età può iniziare l'osteopatia?
                                             </button>
                                         </h2>
-                                        <div id="collapsePediatrico1" class="accordion-collapse collapse show" data-bs-parent="#accordionPediatrico">
+                                        <div id="collapsePediatrico1" class="accordion-collapse collapse show"
+                                            data-bs-parent="#accordionPediatrico">
                                             <div class="accordion-body">
-                                                L'osteopatia pediatrica può essere praticata fin dai primi mesi di vita. Nel mio studio ricevo bambini dai 3 anni in su, quando riescono a collaborare meglio durante la visita.
+                                                L'osteopatia pediatrica può essere praticata fin dai primi mesi di vita.
+                                                Nel mio studio ricevo bambini dai 3 anni in su, quando riescono a
+                                                collaborare meglio durante la visita.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingPediatrico2">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePediatrico2">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapsePediatrico2">
                                                 Il trattamento è doloroso per i bambini?
                                             </button>
                                         </h2>
-                                        <div id="collapsePediatrico2" class="accordion-collapse collapse" data-bs-parent="#accordionPediatrico">
+                                        <div id="collapsePediatrico2" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionPediatrico">
                                             <div class="accordion-body">
-                                                Assolutamente no. Le tecniche pediatriche sono estremamente delicate. I bambini spesso si rilassano durante il trattamento e alcuni si addormentano addirittura!
+                                                Assolutamente no. Le tecniche pediatriche sono estremamente delicate. I
+                                                bambini spesso si rilassano durante il trattamento e alcuni si
+                                                addormentano addirittura!
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingPediatrico3">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePediatrico3">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapsePediatrico3">
                                                 Devo rimanere presente durante il trattamento?
                                             </button>
                                         </h2>
-                                        <div id="collapsePediatrico3" class="accordion-collapse collapse" data-bs-parent="#accordionPediatrico">
+                                        <div id="collapsePediatrico3" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionPediatrico">
                                             <div class="accordion-body">
-                                                Sì, la presenza di un genitore è sempre richiesta per i minori. Questo tranquillizza il bambino e permette ai genitori di osservare le tecniche utilizzate.
+                                                Sì, la presenza di un genitore è sempre richiesta per i minori. Questo
+                                                tranquillizza il bambino e permette ai genitori di osservare le tecniche
+                                                utilizzate.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingPediatrico4">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePediatrico4">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapsePediatrico4">
                                                 Quanto dura una seduta pediatrica?
                                             </button>
                                         </h2>
-                                        <div id="collapsePediatrico4" class="accordion-collapse collapse" data-bs-parent="#accordionPediatrico">
+                                        <div id="collapsePediatrico4" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionPediatrico">
                                             <div class="accordion-body">
-                                                Le sedute pediatriche sono più brevi: 20-30 minuti per i più piccoli, fino a 40 minuti per gli adolescenti. Rispettiamo sempre i tempi di attenzione dei bambini.
+                                                Le sedute pediatriche sono più brevi: 20-30 minuti per i più piccoli,
+                                                fino a 40 minuti per gli adolescenti. Rispettiamo sempre i tempi di
+                                                attenzione dei bambini.
                                             </div>
                                         </div>
                                     </div>
@@ -1374,7 +1452,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(pediatrico)" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary-custom" onclick="prenotaSpecializzazione(pediatrico)"
+                        data-bs-dismiss="modal">
                         <i class="fas fa-calendar-plus me-2"></i>Prenota per Osteopatia Pediatrica
                     </button>
                 </div>
@@ -1385,105 +1464,112 @@
     <!-- Modal Postura Corretta -->
     <div class="modal fade" id="modalPosturaCorretta" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content  p-4">
-                <div class="modal-header" >
+            <div class="modal-content p-4">
+                <div class="modal-header">
                     <h5 class="modal-title">
                         <i class="fas fa-child me-2"></i>
                         Postura corretta: esiste davvero? Cosa dice la scienza
                     </h5>
                 </div>
                 <div class="modal-body">
-                        <h2><strong>Postura corretta: esiste davvero? Cosa dice la scienza</strong></h2>
+                    <h2><strong>Postura corretta: esiste davvero? Cosa dice la scienza</strong></h2>
 
-                        <p>Quante volte hai sentito dire: <em>“Stai dritto, altrimenti ti verrà mal di schiena’’</em>?</p>
-                        <p>Oppure magari ti sei accorto di stare <em>“curvo”</em> e hai pensato che quella fosse la causa dei tuoi dolori.</p>
-                        <p><em>È davvero così?</em></p>
+                    <p>Quante volte hai sentito dire: <em>“Stai dritto, altrimenti ti verrà mal di schiena’’</em>?</p>
+                    <p>Oppure magari ti sei accorto di stare <em>“curvo”</em> e hai pensato che quella fosse la causa
+                        dei tuoi dolori.</p>
+                    <p><em>È davvero così?</em></p>
 
-                        <p>Negli ultimi anni, la ricerca scientifica ha iniziato a mettere in discussione uno dei concetti più radicati: <em>l’idea che esista una postura corretta uguale per tutti</em>.</p>
+                    <p>Negli ultimi anni, la ricerca scientifica ha iniziato a mettere in discussione uno dei concetti
+                        più radicati: <em>l’idea che esista una postura corretta uguale per tutti</em>.</p>
 
-                        <h2><strong>Esiste una postura perfetta?</strong></h2>
+                    <h2><strong>Esiste una postura perfetta?</strong></h2>
 
-                        <p>La risposta breve è: <strong>no, non esiste una postura perfetta valida per tutti</strong>.</p>
+                    <p>La risposta breve è: <strong>no, non esiste una postura perfetta valida per tutti</strong>.</p>
 
-                        <p>Ogni persona ha:</p>
-                        <ul>
-                            <li>una struttura corporea diversa</li>
-                            <li>abitudini diverse</li>
-                            <li>livelli di attività diversi</li>
-                        </ul>
+                    <p>Ogni persona ha:</p>
+                    <ul>
+                        <li>una struttura corporea diversa</li>
+                        <li>abitudini diverse</li>
+                        <li>livelli di attività diversi</li>
+                    </ul>
 
-                        <p>E soprattutto: <em>il corpo umano è fatto per muoversi, non per restare immobile in una posizione “ideale”</em>.</p>
+                    <p>E soprattutto: <em>il corpo umano è fatto per muoversi, non per restare immobile in una posizione
+                            “ideale”</em>.</p>
 
-                        <p>Diversi studi hanno dimostrato che:</p>
-                        <ul>
-                            <li>persone senza dolore possono avere posture molto diverse tra loro</li>
-                            <li>persone con dolore possono avere posture considerate “perfette”</li>
-                        </ul>
+                    <p>Diversi studi hanno dimostrato che:</p>
+                    <ul>
+                        <li>persone senza dolore possono avere posture molto diverse tra loro</li>
+                        <li>persone con dolore possono avere posture considerate “perfette”</li>
+                    </ul>
 
-                        <p><strong>Quindi: la postura, da sola, non spiega il dolore.</strong></p>
+                    <p><strong>Quindi: la postura, da sola, non spiega il dolore.</strong></p>
 
-                        <h2><strong>Postura e dolore: qual è il vero rapporto?</strong></h2>
+                    <h2><strong>Postura e dolore: qual è il vero rapporto?</strong></h2>
 
-                        <p>Per anni si è pensato che una postura “scorretta” fosse la causa principale di dolori come il mal di schiena o il dolore cervicale.</p>
+                    <p>Per anni si è pensato che una postura “scorretta” fosse la causa principale di dolori come il mal
+                        di schiena o il dolore cervicale.</p>
 
-                        <p>Oggi sappiamo che <em>il dolore è un fenomeno molto più complesso</em>.</p>
+                    <p>Oggi sappiamo che <em>il dolore è un fenomeno molto più complesso</em>.</p>
 
-                        <p>Fattori che influenzano il dolore:</p>
-                        <ul>
-                            <li>carico fisico (lavoro, sport, sforzi)</li>
-                            <li>stress e tensione</li>
-                            <li>qualità del sonno</li>
-                            <li>livello di movimento durante la giornata</li>
-                        </ul>
+                    <p>Fattori che influenzano il dolore:</p>
+                    <ul>
+                        <li>carico fisico (lavoro, sport, sforzi)</li>
+                        <li>stress e tensione</li>
+                        <li>qualità del sonno</li>
+                        <li>livello di movimento durante la giornata</li>
+                    </ul>
 
-                        <h2><strong>Il vero problema: stare troppo nella stessa posizione</strong></h2>
+                    <h2><strong>Il vero problema: stare troppo nella stessa posizione</strong></h2>
 
-                        <p>Più che <em>“postura sbagliata”</em>, il vero nemico è spesso la <strong>staticità prolungata</strong>.</p>
+                    <p>Più che <em>“postura sbagliata”</em>, il vero nemico è spesso la <strong>staticità
+                            prolungata</strong>.</p>
 
-                        <p>Il corpo non ama:</p>
-                        <ul>
-                            <li>stare seduto troppo a lungo</li>
-                            <li>stare in piedi fermo per ore</li>
-                            <li>mantenere sempre la stessa posizione</li>
-                        </ul>
+                    <p>Il corpo non ama:</p>
+                    <ul>
+                        <li>stare seduto troppo a lungo</li>
+                        <li>stare in piedi fermo per ore</li>
+                        <li>mantenere sempre la stessa posizione</li>
+                    </ul>
 
-                        <p>Anche la postura <em>“perfetta”</em>, mantenuta troppo a lungo, può diventare un problema.</p>
+                    <p>Anche la postura <em>“perfetta”</em>, mantenuta troppo a lungo, può diventare un problema.</p>
 
-                        <p>Per questo motivo, un concetto fondamentale è:</p>
-                        <p><strong>La postura migliore è quella che cambi spesso.</strong></p>
+                    <p>Per questo motivo, un concetto fondamentale è:</p>
+                    <p><strong>La postura migliore è quella che cambi spesso.</strong></p>
 
-                        <h2><strong>Quindi non devo preoccuparmi della postura?</strong></h2>
+                    <h2><strong>Quindi non devo preoccuparmi della postura?</strong></h2>
 
-                        <p>Non esattamente.</p>
+                    <p>Non esattamente.</p>
 
-                        <p>La postura ha comunque un ruolo, ma <em>non nel modo in cui spesso viene raccontata</em>.</p>
+                    <p>La postura ha comunque un ruolo, ma <em>non nel modo in cui spesso viene raccontata</em>.</p>
 
-                        <p>Più che cercare la posizione perfetta, è utile:</p>
-                        <ul>
-                            <li>variare spesso posizione</li>
-                            <li>muoversi durante la giornata</li>
-                            <li>migliorare la capacità del corpo di gestire il carico</li>
-                        </ul>
+                    <p>Più che cercare la posizione perfetta, è utile:</p>
+                    <ul>
+                        <li>variare spesso posizione</li>
+                        <li>muoversi durante la giornata</li>
+                        <li>migliorare la capacità del corpo di gestire il carico</li>
+                    </ul>
 
-                        <p>In altre parole: <strong>non serve “stare dritti”, serve stare bene nel proprio corpo</strong>.</p>
+                    <p>In altre parole: <strong>non serve “stare dritti”, serve stare bene nel proprio corpo</strong>.
+                    </p>
 
-                        <h2><strong>Cosa fare se hai dolore?</strong></h2>
+                    <h2><strong>Cosa fare se hai dolore?</strong></h2>
 
-                        <p>Se stai avendo dolore (schiena, cervicale, spalle), correggere la postura da solo raramente è la soluzione definitiva.</p>
+                    <p>Se stai avendo dolore (schiena, cervicale, spalle), correggere la postura da solo raramente è la
+                        soluzione definitiva.</p>
 
-                        <p>È importante capire:</p>
-                        <ul>
-                            <li>da dove nasce realmente il problema</li>
-                            <li>quali movimenti o carichi lo influenzano</li>
-                            <li>come intervenire in modo specifico</li>
-                        </ul>
+                    <p>È importante capire:</p>
+                    <ul>
+                        <li>da dove nasce realmente il problema</li>
+                        <li>quali movimenti o carichi lo influenzano</li>
+                        <li>come intervenire in modo specifico</li>
+                    </ul>
 
-                        <p>Un approccio efficace non si limita a <em>“raddrizzare la schiena”</em>, ma lavora su:</p>
-                        <ul>
-                            <li>movimento</li>
-                            <li>gestione del carico</li>
-                            <li>trattamento mirato</li>
-                        </ul>
+                    <p>Un approccio efficace non si limita a <em>“raddrizzare la schiena”</em>, ma lavora su:</p>
+                    <ul>
+                        <li>movimento</li>
+                        <li>gestione del carico</li>
+                        <li>trattamento mirato</li>
+                    </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -1496,7 +1582,7 @@
     <div class="modal fade" id="modalCervicale" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content p-4">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h5 class="modal-title">
                         <i class="fas fa-child me-2"></i>
                         Mal di testa e cervicale: che relazione c’è davvero?
@@ -1505,7 +1591,8 @@
                 <div class="modal-body">
                     <h2><strong>Mal di testa e cervicale: che relazione c’è davvero?</strong></h2>
 
-                    <p>Molte persone che soffrono di mal di testa sono convinte che la causa sia la <em>“cervicale”</em>.</p>
+                    <p>Molte persone che soffrono di mal di testa sono convinte che la causa sia la
+                        <em>“cervicale”</em>.</p>
 
                     <p>Frasi come:</p>
                     <p><em>“Ho mal di testa perché ho la cervicale infiammata”</em></p>
@@ -1513,13 +1600,15 @@
 
                     <p><em>Ma è davvero così semplice?</em></p>
 
-                    <p>La realtà è più complessa — e capire come funziona davvero questo rapporto è fondamentale per affrontare il problema nel modo corretto.</p>
+                    <p>La realtà è più complessa — e capire come funziona davvero questo rapporto è fondamentale per
+                        affrontare il problema nel modo corretto.</p>
 
                     <h2><strong>Esiste davvero un mal di testa legato alla cervicale?</strong></h2>
 
                     <p><strong>Sì, esiste.</strong></p>
 
-                    <p>Si chiama <strong>cefalea cervicogenica</strong> ed è una forma di mal di testa che origina da strutture del rachide cervicale.</p>
+                    <p>Si chiama <strong>cefalea cervicogenica</strong> ed è una forma di mal di testa che origina da
+                        strutture del rachide cervicale.</p>
 
                     <p>In questi casi, il dolore:</p>
                     <ul>
@@ -1553,7 +1642,8 @@
 
                     <p>Il collegamento esiste ed è anche ben spiegato dalla scienza.</p>
 
-                    <p>A livello neurologico, le strutture cervicali e quelle della testa condividono alcune vie nervose, in particolare nel cosiddetto:</p>
+                    <p>A livello neurologico, le strutture cervicali e quelle della testa condividono alcune vie
+                        nervose, in particolare nel cosiddetto:</p>
                     <p><strong>→ complesso trigemino-cervicale</strong></p>
 
                     <p>Questo significa che:</p>
@@ -1593,11 +1683,13 @@
                         <li>febbre associata</li>
                     </ul>
 
-                    <p><em>Prima di qualsiasi trattamento, è sempre corretto escludere cause non muscoloscheletriche.</em></p>
+                    <p><em>Prima di qualsiasi trattamento, è sempre corretto escludere cause non
+                            muscoloscheletriche.</em></p>
 
                     <h2><strong>Cosa può aiutare davvero</strong></h2>
 
-                    <p>Quando il mal di testa è associato a problematiche cervicali, un approccio efficace può includere:</p>
+                    <p>Quando il mal di testa è associato a problematiche cervicali, un approccio efficace può
+                        includere:</p>
                     <ul>
                         <li>trattamento manuale mirato</li>
                         <li>esercizi specifici</li>
@@ -1605,7 +1697,8 @@
                         <li>gestione del carico e dello stress</li>
                     </ul>
 
-                    <p><strong>Le evidenze scientifiche suggeriscono che un approccio attivo (non solo passivo) sia spesso il più efficace nel medio-lungo termine.</strong></p>
+                    <p><strong>Le evidenze scientifiche suggeriscono che un approccio attivo (non solo passivo) sia
+                            spesso il più efficace nel medio-lungo termine.</strong></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -1613,11 +1706,11 @@
             </div>
         </div>
     </div>
-        <!-- Modal Cervicale -->
+    <!-- Modal Cervicale -->
     <div class="modal fade" id="modalTendinite" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content p-4">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h5 class="modal-title">
                         <i class="fas fa-child me-2"></i>
                         Tendinite: infiammazione o problema di carico? Cosa fare davvero
@@ -1628,11 +1721,13 @@
 
                     <p><em>“Ho una tendinite, devo stare fermo.”</em></p>
 
-                    <p>È una delle frasi più comuni tra chi ha dolore durante lo sport o anche nei movimenti quotidiani.</p>
+                    <p>È una delle frasi più comuni tra chi ha dolore durante lo sport o anche nei movimenti quotidiani.
+                    </p>
 
                     <p><em>Ma è davvero questa la soluzione?</em></p>
 
-                    <p>Negli ultimi anni, la ricerca scientifica ha cambiato profondamente il modo di vedere le cosiddette <em>“tendiniti”</em>.</p>
+                    <p>Negli ultimi anni, la ricerca scientifica ha cambiato profondamente il modo di vedere le
+                        cosiddette <em>“tendiniti”</em>.</p>
 
                     <p>E in molti casi, <strong>il problema non è l’infiammazione</strong>.</p>
 
@@ -1651,14 +1746,16 @@
                         <li>ha sviluppato alterazioni della struttura</li>
                     </ul>
 
-                    <p><strong>Quindi: non è solo un problema infiammatorio, ma soprattutto un problema di gestione del carico.</strong></p>
+                    <p><strong>Quindi: non è solo un problema infiammatorio, ma soprattutto un problema di gestione del
+                            carico.</strong></p>
 
                     <h2><strong>Perché viene dolore?</strong></h2>
 
                     <p>Il dolore al tendine spesso compare quando c’è uno squilibrio tra:</p>
 
                     <p><strong>carico applicato</strong><br>
-                    <strong>capacità del tendine di tollerarlo</strong></p>
+                        <strong>capacità del tendine di tollerarlo</strong>
+                    </p>
 
                     <p>Esempi comuni:</p>
                     <ul>
@@ -1725,7 +1822,8 @@
                         <li>facilitare il recupero</li>
                     </ul>
 
-                    <p><strong>Però ricorda: il vero cambiamento avviene quando il tendine viene allenato correttamente.</strong></p>
+                    <p><strong>Però ricorda: il vero cambiamento avviene quando il tendine viene allenato
+                            correttamente.</strong></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -1734,7 +1832,7 @@
         </div>
     </div>
     <script>
-        function validateEmail(email){
+        function validateEmail(email) {
 
         }
     </script>
@@ -1748,7 +1846,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1774,57 +1872,6 @@
             });
         });
 
-        // Booking confirmation
-        // document.getElementById('confirmBooking').addEventListener('click', () => {
-        //     const visitType = document.getElementById('visitType').value;
-        //     const patientName = document.getElementById('patientName').value;
-        //     const patientPhone = document.getElementById('patientPhone').value;
-        //     const patientEmail = document.getElementById('patientEmail').value;
-
-        //     if (!visitType || !patientName || !patientPhone || !patientEmail || !selectedDate || !selectedTime) {
-        //         alert('Per favore, compila tutti i campi obbligatori e seleziona data e orario.');
-        //         return;
-        //     }
-
-        //     // Show loading
-        //     const button = document.getElementById('confirmBooking');
-        //     const originalText = button.innerHTML;
-        //     button.innerHTML = '<div class="loading"></div> Conferma in corso...';
-        //     button.disabled = true;
-
-        //     // Simulate booking process
-        //     setTimeout(() => {
-        //         button.innerHTML = originalText;
-        //         button.disabled = false;
-
-        //         document.getElementById('successMessage').classList.add('show');
-
-        //         // Reset form
-        //         document.getElementById('visitType').value = '';
-        //         document.getElementById('patientName').value = '';
-        //         document.getElementById('patientPhone').value = '';
-        //         document.getElementById('patientEmail').value = '';
-        //         document.getElementById('patientNotes').value = '';
-
-        //         selectedDate = null;
-        //         selectedTime = null;
-
-        //         document.querySelectorAll('.calendar-day.selected').forEach(el => {
-        //             el.classList.remove('selected');
-        //         });
-        //         document.querySelectorAll('.time-slot.selected').forEach(el => {
-        //             el.classList.remove('selected');
-        //         });
-
-        //         generateTimeSlots();
-
-        //         // Hide success message after 5 seconds
-        //         setTimeout(() => {
-        //             document.getElementById('successMessage').classList.remove('show');
-        //         }, 5000);
-        //     }, 2000);
-        // });
-
         // Specialization booking function
         function prenotaSpecializzazione(specializzazione) {
             // Scroll to booking section
@@ -1837,7 +1884,7 @@
             const visitTypeSelect = document.getElementById('visitType');
 
             setTimeout(() => {
-                switch(specializzazione) {
+                switch (specializzazione) {
                     case 'dolori-muscolari':
                         visitTypeSelect.value = 'prima-visita';
                         break;
@@ -1900,11 +1947,11 @@
         }
 
         // Enhanced modal functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Add smooth animations to modal tabs
             const tabButtons = document.querySelectorAll('[data-bs-toggle="tab"]');
             tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const targetTab = document.querySelector(this.getAttribute('data-bs-target'));
                     if (targetTab) {
                         setTimeout(() => {
@@ -1922,14 +1969,14 @@
             });
         },
 
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        }));
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            }));
     </script>
 
     <!-- Floating Clickable Image (Bottom Right) -->
@@ -1937,4 +1984,5 @@
         <img src="/static/site-assets/whastapp-logo.png" alt="Prenota" class="floating-image" />
     </a>
 </body>
+
 </html>
