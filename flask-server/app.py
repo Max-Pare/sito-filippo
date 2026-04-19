@@ -4,6 +4,12 @@ import os
 import minidb
 from datetime import datetime, tzinfo, timedelta
 from werkzeug.middleware.proxy_fix import ProxyFix
+import time
+import requests
+from queue import Queue
+from threading import Thread
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 class TZ1(tzinfo):
     def utcoffset(self, dt):
@@ -109,9 +115,9 @@ def log(message, logtype:str = 'INFO'):
 def register_appointment(booking_data: dict):
     appointment = appointify(booking_data)
     if appointment == 'ERR': return 'ERR'
+    send_ntfy(f"New appointment: {booking_data}")
     appointment.save(db)
     db.commit()
-    
     
 @app.route("/prenota", methods=["POST"])
 def prenota():
@@ -156,6 +162,74 @@ def prenota():
     return result_page(
         "Richiesta ricevuta, verrete contattati al piu' presto."
     )
+
+
+
+
+# ---- CONFIG ----
+NTFY_URL = "https://your-ntfy-server/topic-name"
+NTFY_HEADERS = {
+    "Title": "New Appointment",
+    "Priority": "5"
+}
+NTFY_AUTH = None  # ("user", "pass") or None
+
+# ---- HTTP SESSION WITH RETRY ----
+def _session():
+    retry = Retry(
+        total=5,
+        backoff_factor=1.5,
+        status_forcelist=[429, 500, 502, 503, 504],
+        allowed_methods=["POST"]
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    s = requests.Session()
+    s.mount("http://", adapter)
+    s.mount("https://", adapter)
+    return s
+
+SESSION = _session()
+
+# ---- SEND FUNCTION ----
+def send_ntfy(msg: str) -> bool:
+    try:
+        r = SESSION.post(
+            NTFY_URL,
+            data=msg.encode("utf-8"),
+            headers=NTFY_HEADERS,
+            auth=NTFY_AUTH,
+            timeout=5
+        )
+        r.raise_for_status()
+        return True
+    except requests.exceptions.RequestException as e:
+        print(f"ntfy failed: {e}")
+        return False
+
+# ---- QUEUE + WORKER ----
+ntfy_queue = Queue()
+
+def _worker():
+    while True:
+        msg = ntfy_queue.get()
+        ok = send_ntfy(msg)
+        if not ok:
+            time.sleep(5)
+            ntfy_queue.put(msg)  # retry later
+        ntfy_queue.task_done()
+
+Thread(target=_worker, daemon=True).start()
+
+# ---- YOUR FUNCTION ----
+def register_appointment(booking_data: dict):
+    appointment = appointify(booking_data)
+    if appointment == 'ERR':
+        return 'ERR'
+
+    appointment.save(db)
+    db.commit()
+
+    ntfy_queue.put(f"New appointment: {booking_data}")
 
 if __name__ == "__main__":
     app.run(debug=False, port=8080, host='localhost')
