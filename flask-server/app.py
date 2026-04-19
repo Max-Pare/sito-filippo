@@ -62,7 +62,7 @@ def clean_html(string):
         newstr = newstr.replace(char, ' ')
     return newstr
 
-@app.route("/appuntamenti")
+#@app.route("/appuntamenti")
 def get_db():
     entry_list = []
     entry_list = [f'<h4><li class="hero-title mb-4">{clean_html(app_to_str(_app))}</li></h4>' for _app in Appointment.load(db)]
@@ -232,4 +232,4 @@ def register_appointment(booking_data: dict):
     ntfy_queue.put(f"New appointment: {booking_data}")
 
 if __name__ == "__main__":
-    app.run(debug=False, port=8080, host='localhost')
+    app.run(debug=False, port=8080, host='0.0.0.0')
