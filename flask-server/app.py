@@ -4,6 +4,8 @@ import os
 import minidb
 from datetime import datetime, tzinfo, timedelta
 from werkzeug.middleware.proxy_fix import ProxyFix
+
+# --- NTFY IMPORTS ---
 import time
 import requests
 from queue import Queue
@@ -11,6 +13,57 @@ from threading import Thread
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+# --- NTFY CONFIG ---
+NTFY_URL = "https://your-ntfy-server/topic-name"
+NTFY_HEADERS = {
+    "Title": "New Appointment",
+    "Priority": "5"
+}
+NTFY_AUTH = None  # ("user","pass") or None
+
+def _ntfy_session():
+    retry = Retry(
+        total=5,
+        backoff_factor=1.5,
+        status_forcelist=[429, 500, 502, 503, 504],
+        allowed_methods=["POST"]
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    s = requests.Session()
+    s.mount("http://", adapter)
+    s.mount("https://", adapter)
+    return s
+
+NTFY_SESSION = _ntfy_session()
+ntfy_queue = Queue()
+
+def send_ntfy(msg: str) -> bool:
+    try:
+        r = NTFY_SESSION.post(
+            NTFY_URL,
+            data=msg.encode("utf-8"),
+            headers=NTFY_HEADERS,
+            auth=NTFY_AUTH,
+            timeout=5
+        )
+        r.raise_for_status()
+        return True
+    except requests.exceptions.RequestException as e:
+        log(f'ntfy failed: {e}', 'ERROR')
+        return False
+
+def _ntfy_worker():
+    while True:
+        msg = ntfy_queue.get()
+        ok = send_ntfy(msg)
+        if not ok:
+            time.sleep(5)
+            ntfy_queue.put(msg)
+        ntfy_queue.task_done()
+
+Thread(target=_ntfy_worker, daemon=True).start()
+
+# --- ORIGINAL CODE ---
 class TZ1(tzinfo):
     def utcoffset(self, dt):
         return timedelta(hours=1)
@@ -41,11 +94,7 @@ TIMEZONE = TZ1()
 if not os.path.isdir(DATA_DIR):
     os.mkdir(DATA_DIR)
 
-app = Flask(
-    __name__,
-    # static_folder='site_files',
-    # static_url_path='/site_files'
-)
+app = Flask(__name__)
 
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
@@ -62,14 +111,12 @@ def clean_html(string):
         newstr = newstr.replace(char, ' ')
     return newstr
 
-#@app.route("/appuntamenti")
+
 def get_db():
-    entry_list = []
     entry_list = [f'<h4><li class="hero-title mb-4">{clean_html(app_to_str(_app))}</li></h4>' for _app in Appointment.load(db)]
     entry_list.insert(0,'<ol>')
     entry_list.append('</ol>')
-    elem = '\n'.join(entry_list)
-    return elem
+    return '\n'.join(entry_list)
 
 @app.route("/")
 def home():
@@ -81,8 +128,6 @@ def privacy_policy():
     return render_template("privacy.html")
 
 
-
-# @app.route("/errore")
 def result_page(msg: str = "Errore interno."):
     return render_template("error.html", err_msg=msg)
 
@@ -114,20 +159,27 @@ def log(message, logtype:str = 'INFO'):
 
 def register_appointment(booking_data: dict):
     appointment = appointify(booking_data)
-    if appointment == 'ERR': return 'ERR'
-    send_ntfy(f"New appointment: {booking_data}")
+    if appointment == 'ERR':
+        return 'ERR'
+
     appointment.save(db)
     db.commit()
-    
+
+    # --- NTFY TRIGGER ---
+    ntfy_queue.put(
+        f"Nuovo appuntamento\n"
+        f"Nome: {booking_data.get('patientName')}\n"
+        f"Tipo: {booking_data.get('visitType')}\n"
+        f"Telefono: {booking_data.get('patientPhone')}\n"
+        f"Email: {booking_data.get('email')}\n"
+        f"Note: {booking_data.get('patientNotes')}"
+    )
+
+
 @app.route("/prenota", methods=["POST"])
 def prenota():
-    def check_too_long(obj: dict):
-        return any(len(value) > 1024 for _, value in obj.items())
-
     def check_phone_valid(phone: str):
-        """Check if phone number is valid (no invalid characters and valid length)"""
         return 10 <= len(phone) <= 15
-        return all(char in "0123456789+ " for char in phone)
 
     def extract_data(form_data):
         return {
@@ -137,7 +189,6 @@ def prenota():
             "patientPhone": form_data.get("patientPhone"),
             "patientNotes": form_data.get("patientNotes"),
         }
-
 
     def check_data(form_data):
         for k, v in form_data.items():
@@ -155,81 +206,19 @@ def prenota():
     form_data = extract_data(request.form)
     if (_res := check_data(form_data)) != "OK":
         return result_page(_res)
-    if register_appointment(form_data) == 'ERR': return result_page()
+
+    if register_appointment(form_data) == 'ERR':
+        return result_page()
+
     for app in Appointment.load(db):
         print(app)
+
     log('Registered appointment.')
+
     return result_page(
         "Richiesta ricevuta, verrete contattati al piu' presto."
     )
 
-
-
-
-# ---- CONFIG ----
-NTFY_URL = "https://your-ntfy-server/topic-name"
-NTFY_HEADERS = {
-    "Title": "New Appointment",
-    "Priority": "5"
-}
-NTFY_AUTH = None  # ("user", "pass") or None
-
-# ---- HTTP SESSION WITH RETRY ----
-def _session():
-    retry = Retry(
-        total=5,
-        backoff_factor=1.5,
-        status_forcelist=[429, 500, 502, 503, 504],
-        allowed_methods=["POST"]
-    )
-    adapter = HTTPAdapter(max_retries=retry)
-    s = requests.Session()
-    s.mount("http://", adapter)
-    s.mount("https://", adapter)
-    return s
-
-SESSION = _session()
-
-# ---- SEND FUNCTION ----
-def send_ntfy(msg: str) -> bool:
-    try:
-        r = SESSION.post(
-            NTFY_URL,
-            data=msg.encode("utf-8"),
-            headers=NTFY_HEADERS,
-            auth=NTFY_AUTH,
-            timeout=5
-        )
-        r.raise_for_status()
-        return True
-    except requests.exceptions.RequestException as e:
-        print(f"ntfy failed: {e}")
-        return False
-
-# ---- QUEUE + WORKER ----
-ntfy_queue = Queue()
-
-def _worker():
-    while True:
-        msg = ntfy_queue.get()
-        ok = send_ntfy(msg)
-        if not ok:
-            time.sleep(5)
-            ntfy_queue.put(msg)  # retry later
-        ntfy_queue.task_done()
-
-Thread(target=_worker, daemon=True).start()
-
-# ---- YOUR FUNCTION ----
-def register_appointment(booking_data: dict):
-    appointment = appointify(booking_data)
-    if appointment == 'ERR':
-        return 'ERR'
-
-    appointment.save(db)
-    db.commit()
-
-    ntfy_queue.put(f"New appointment: {booking_data}")
 
 if __name__ == "__main__":
     app.run(debug=False, port=8080, host='0.0.0.0')
