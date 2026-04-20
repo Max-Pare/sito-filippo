@@ -4,7 +4,7 @@ import os
 import minidb
 from datetime import datetime, tzinfo, timedelta
 from werkzeug.middleware.proxy_fix import ProxyFix
-
+from dotenv import load_dotenv
 # --- NTFY IMPORTS ---
 import time
 import requests
@@ -14,11 +14,13 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 # --- NTFY CONFIG ---
-NTFY_URL = "https://your-ntfy-server/topic-name"
+load_dotenv()
+NTFY_URL = "https://ntfy.filipporadiceosteopata.com/Appuntamenti"
 NTFY_HEADERS = {
-    "Title": "New Appointment",
+    "Title": "Nuovo appuntamento",
     "Priority": "5"
 }
+NTFY_HEADERS["Authorization"] = f"Bearer {os.getenv('NTFY_TOKEN')}"
 NTFY_AUTH = None  # ("user","pass") or None
 
 def _ntfy_session():
@@ -221,4 +223,4 @@ def prenota():
 
 
 if __name__ == "__main__":
-    app.run(debug=False, port=8080, host='0.0.0.0')
+    app.run(debug=False, port=8085, host='0.0.0.0')
