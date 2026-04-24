@@ -8,8 +8,10 @@ from datetime import datetime
 from pathlib import Path
 
 from flask import Flask, current_app, render_template, request, url_for
+from dotenv import load_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+from .notifications import send_appointment_notification
 from .storage import init_storage, save_appointment
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +35,8 @@ class AppointmentSubmission:
 
 
 def create_app(test_config: dict | None = None) -> Flask:
+    load_dotenv(BASE_DIR / ".env", override=False)
+
     app = Flask(
         __name__,
         template_folder=str(BASE_DIR / "templates"),
@@ -43,6 +47,12 @@ def create_app(test_config: dict | None = None) -> Flask:
         CONTACT_EMAIL=os.getenv("CONTACT_EMAIL", ""),
         MAX_CONTENT_LENGTH=16 * 1024,
         SQLITE_JOURNAL_MODE=os.getenv("SQLITE_JOURNAL_MODE", "WAL"),
+        NTFY_URL=os.getenv(
+            "NTFY_URL",
+            "https://ntfy.filipporadiceosteopata.com/Appuntamenti",
+        ),
+        NTFY_TOKEN=os.getenv("NTFY_TOKEN", ""),
+        NTFY_TIMEOUT=float(os.getenv("NTFY_TIMEOUT", "5")),
     )
     if test_config:
         app.config.update(test_config)
@@ -99,6 +109,14 @@ def _register_routes(app: Flask) -> None:
                 title="Errore interno",
                 message="Errore interno. Riprovare tra poco o contattare via WhatsApp.",
                 status_code=500,
+            )
+
+        try:
+            send_appointment_notification(submission)
+        except Exception:
+            current_app.logger.warning(
+                "Appointment saved but ntfy notification failed",
+                exc_info=True,
             )
 
         current_app.logger.info("Appointment request saved for %s", submission.patient_name)

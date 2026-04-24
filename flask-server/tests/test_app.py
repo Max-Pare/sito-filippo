@@ -4,10 +4,12 @@ import sqlite3
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import website
 from website import create_app
 
 
@@ -36,20 +38,22 @@ class AppTestCase(unittest.TestCase):
         self.assertIn(b'navbar-toggler', response.data)
 
     def test_valid_booking_is_saved(self) -> None:
-        response = self.client.post(
-            "/prenota",
-            data={
-                "visitType": "prima-visita",
-                "patientName": "Mario Rossi",
-                "patientPhone": "+39 345 850 8870",
-                "patientEmail": "mario@example.com",
-                "patientNotes": "Dolore cervicale da due settimane.",
-                "website": "",
-            },
-        )
+        with mock.patch.object(website, "send_appointment_notification") as notify_mock:
+            response = self.client.post(
+                "/prenota",
+                data={
+                    "visitType": "prima-visita",
+                    "patientName": "Mario Rossi",
+                    "patientPhone": "+39 345 850 8870",
+                    "patientEmail": "mario@example.com",
+                    "patientNotes": "Dolore cervicale da due settimane.",
+                    "website": "",
+                },
+            )
 
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"Richiesta ricevuta", response.data)
+        notify_mock.assert_called_once()
 
         with sqlite3.connect(self.database_path) as connection:
             row = connection.execute(
@@ -60,6 +64,28 @@ class AppTestCase(unittest.TestCase):
             ).fetchone()
 
         self.assertEqual(row, ("Mario Rossi", "prima-visita", "mario@example.com", "+39 345 850 8870"))
+
+    def test_notification_failure_does_not_break_booking(self) -> None:
+        with mock.patch.object(
+            website,
+            "send_appointment_notification",
+            side_effect=RuntimeError("ntfy offline"),
+        ) as notify_mock:
+            response = self.client.post(
+                "/prenota",
+                data={
+                    "visitType": "prima-visita",
+                    "patientName": "Mario Rossi",
+                    "patientPhone": "+39 345 850 8870",
+                    "patientEmail": "mario@example.com",
+                    "patientNotes": "",
+                    "website": "",
+                },
+            )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Richiesta ricevuta", response.data)
+        notify_mock.assert_called_once()
 
     def test_invalid_phone_is_rejected(self) -> None:
         response = self.client.post(
