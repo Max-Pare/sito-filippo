@@ -1,6 +1,7 @@
-.venv
+.venv/
 dati.zip
 **/data/
-instance
-**/__pycache__
+instance/
+**/__pycache__/
 **/appointments.sqlite
+.pytest_cache/
