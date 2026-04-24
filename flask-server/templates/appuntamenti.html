@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Appuntamenti</title>
     <style>
         body {
@@ -40,7 +41,7 @@
         <h2>Appuntamenti</h2>
         <ol>
             {% for e in entries %}
-                <li>{{ e|safe }}</li>
+                <li>{{ e }}</li>
             {% endfor %}
         </ol>
     </div>

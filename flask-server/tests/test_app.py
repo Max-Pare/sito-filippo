@@ -32,6 +32,8 @@ class AppTestCase(unittest.TestCase):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"Prenota la Tua Visita", response.data)
+        self.assertIn(b'id="contatti"', response.data)
+        self.assertIn(b'navbar-toggler', response.data)
 
     def test_valid_booking_is_saved(self) -> None:
         response = self.client.post(

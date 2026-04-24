@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Filippo Radice - Osteopata Professionista | Libera il tuo corpo, Ritrova la tua vitalità</title>
-    <meta name="description" content="Osteopata specializzato in dolori muscolo-scheletrici, approccio sportivo, cefalee e osteopatia pediatrica. Prenota la tua visita online.">
-    <!-- Bootstrap CSS -->
-    <link href="./static/site-assets/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="./static/site-assets/all.min.css">
-    <!-- Google Fonts -->
-    <link href="./static/site-assets/css2" rel="stylesheet">
-</head>
+{# Shared head assets partial. Include inside <head>. #}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Osteopata specializzato in dolori muscolo-scheletrici, approccio sportivo, cefalee e osteopatia pediatrica. Prenota la tua visita online.">
+<link href="{{ url_for('static', filename='site-assets/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='site-assets/main.css') }}">
+<link href="{{ url_for('static', filename='site-assets/google-fonts.css') }}" rel="stylesheet">
