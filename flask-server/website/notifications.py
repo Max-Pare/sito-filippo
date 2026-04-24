@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 from urllib import request
 from urllib.error import HTTPError, URLError
 
@@ -20,7 +21,7 @@ def send_appointment_notification(submission) -> None:
 
     ntfy_token = current_app.config.get("NTFY_TOKEN", "").strip()
     if ntfy_token:
-        headers["Authorization"] = f"Bearer {ntfy_token}"
+        headers["Authorization"] = _build_auth_header(ntfy_token)
 
     ntfy_request = request.Request(
         ntfy_url,
@@ -53,3 +54,17 @@ def _build_message(submission) -> str:
         f"Ricevuta: {submission.created_at}",
     ]
     return "\n".join(lines)
+
+
+def _build_auth_header(token_or_header: str) -> str:
+    normalized = token_or_header.strip()
+    lowered = normalized.lower()
+
+    if lowered.startswith("bearer ") or lowered.startswith("basic "):
+        return normalized
+
+    if ":" in normalized:
+        encoded = base64.b64encode(normalized.encode("utf-8")).decode("ascii")
+        return f"Basic {encoded}"
+
+    return f"Bearer {normalized}"

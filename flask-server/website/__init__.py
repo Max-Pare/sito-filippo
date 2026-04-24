@@ -113,9 +113,10 @@ def _register_routes(app: Flask) -> None:
 
         try:
             send_appointment_notification(submission)
-        except Exception:
+        except Exception as exc:
             current_app.logger.warning(
-                "Appointment saved but ntfy notification failed",
+                "Appointment saved but ntfy notification failed: %s",
+                exc,
                 exc_info=True,
             )
 

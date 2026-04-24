@@ -10,6 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import website
+from website import notifications
 from website import create_app
 
 
@@ -86,6 +87,20 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"Richiesta ricevuta", response.data)
         notify_mock.assert_called_once()
+
+    def test_ntfy_auth_header_accepts_prefixed_and_raw_tokens(self) -> None:
+        self.assertEqual(
+            notifications._build_auth_header("tk_exampletoken"),
+            "Bearer tk_exampletoken",
+        )
+        self.assertEqual(
+            notifications._build_auth_header("Bearer tk_exampletoken"),
+            "Bearer tk_exampletoken",
+        )
+        self.assertEqual(
+            notifications._build_auth_header("Basic dGVzdA=="),
+            "Basic dGVzdA==",
+        )
 
     def test_invalid_phone_is_rejected(self) -> None:
         response = self.client.post(
