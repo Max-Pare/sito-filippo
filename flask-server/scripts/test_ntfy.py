@@ -55,6 +55,7 @@ def main() -> int:
         "Content-Type": "text/plain; charset=utf-8",
         "Title": args.title,
         "Priority": args.priority,
+        "User-Agent": "sito-filippo-ntfy-debug/1.0",
     }
     if ntfy_token:
         headers["Authorization"] = _build_auth_header(ntfy_token)

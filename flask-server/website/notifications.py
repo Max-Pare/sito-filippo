@@ -17,6 +17,7 @@ def send_appointment_notification(submission) -> None:
         "Content-Type": "text/plain; charset=utf-8",
         "Title": "Nuovo appuntamento",
         "Priority": "5",
+        "User-Agent": "sito-filippo/1.0 (+https://filipporadiceosteopata.com)",
     }
 
     ntfy_token = current_app.config.get("NTFY_TOKEN", "").strip()
