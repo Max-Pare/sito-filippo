@@ -22,6 +22,9 @@
 
 }
 
+.hero-content#top-title {
+    margin-top: 5dvh;
+}
 
 #info-contatti {
     overflow: hidden;
