@@ -22,9 +22,6 @@
 
 }
 
-.hero-content#top-title {
-    margin-top: 5dvh;
-}
 
 #info-contatti {
     overflow: hidden;
@@ -687,6 +684,7 @@ body {
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2rem;
+	margin-top: 7.5dvh;
     }
     
     .hero-subtitle {
