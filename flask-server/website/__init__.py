@@ -64,7 +64,6 @@ def create_app(test_config: dict | None = None) -> Flask:
     _register_response_hooks(app)
     return app
 
-
 def _configure_logging() -> None:
     root_logger = logging.getLogger()
     if root_logger.handlers:
@@ -74,11 +73,21 @@ def _configure_logging() -> None:
         format="%(asctime)s %(levelname)s %(name)s: %(message)s",
     )
 
+from flask import send_from_directory
 
 def _register_routes(app: Flask) -> None:
     @app.get("/")
     def home():
         return render_template("index.html")
+
+
+    @app.route('/favicon.ico')
+    def favicon():
+        return send_from_directory(
+            app.static_folder,
+            'favicon.ico',
+            mimetype='image/vnd.microsoft.icon'
+          )
 
     @app.get("/privacy")
     def privacy_policy():
