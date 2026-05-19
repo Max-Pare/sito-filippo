@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from flask import Flask, current_app, render_template, request, url_for
+from flask import Flask, current_app, render_template, request, send_from_directory, url_for
 from dotenv import load_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -18,6 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ALLOWED_VISIT_TYPES = {"prima-visita", "controllo"}
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 PHONE_RE = re.compile(r"^[0-9+() /\-]+$")
+STATIC_CACHE_SECONDS = 31536000
 
 
 class ValidationError(ValueError):
@@ -46,6 +47,7 @@ def create_app(test_config: dict | None = None) -> Flask:
         DATABASE_PATH=str(BASE_DIR / "data" / "appointments.sqlite"),
         CONTACT_EMAIL=os.getenv("CONTACT_EMAIL", ""),
         MAX_CONTENT_LENGTH=16 * 1024,
+        STATIC_CACHE_SECONDS=STATIC_CACHE_SECONDS,
         SQLITE_JOURNAL_MODE=os.getenv("SQLITE_JOURNAL_MODE", "WAL"),
         NTFY_URL=os.getenv(
             "NTFY_URL",
@@ -60,6 +62,7 @@ def create_app(test_config: dict | None = None) -> Flask:
     _configure_logging()
     app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
     init_storage(app)
+    _register_static_assets(app)
     _register_routes(app)
     _register_response_hooks(app)
     return app
@@ -73,7 +76,34 @@ def _configure_logging() -> None:
         format="%(asctime)s %(levelname)s %(name)s: %(message)s",
     )
 
-from flask import send_from_directory
+def _register_static_assets(app: Flask) -> None:
+    @app.get("/assets/<asset_version>/<path:filename>")
+    def static_asset_file(asset_version: str, filename: str):
+        return send_from_directory(
+            app.static_folder,
+            filename,
+            max_age=app.config["STATIC_CACHE_SECONDS"],
+        )
+
+    @app.template_global()
+    def static_asset(filename: str) -> str:
+        return url_for(
+            "static_asset_file",
+            asset_version=_static_asset_version(app, filename),
+            filename=filename,
+        )
+
+
+def _static_asset_version(app: Flask, filename: str) -> str:
+    static_root = Path(app.static_folder or "")
+    try:
+        asset_stat = (static_root / filename).stat()
+    except OSError:
+        app.logger.warning("Static asset referenced but missing: %s", filename)
+        return "missing"
+
+    return f"{asset_stat.st_mtime_ns:x}-{asset_stat.st_size:x}"
+
 
 def _register_routes(app: Flask) -> None:
     @app.get("/")
@@ -164,6 +194,14 @@ def _register_routes(app: Flask) -> None:
 def _register_response_hooks(app: Flask) -> None:
     @app.after_request
     def add_security_headers(response):
+        static_endpoints = {"static", "static_asset_file"}
+        if request.endpoint in static_endpoints:
+            static_cache = f"public, max-age={current_app.config['STATIC_CACHE_SECONDS']}, immutable"
+            response.headers["Cache-Control"] = static_cache
+            response.headers["CDN-Cache-Control"] = static_cache
+        else:
+            response.headers.setdefault("Cache-Control", "no-cache")
+            response.headers.setdefault("CDN-Cache-Control", "no-cache")
         response.headers.setdefault("Content-Security-Policy", _content_security_policy())
         response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
         response.headers.setdefault("X-Content-Type-Options", "nosniff")

@@ -1,11 +1,12 @@
 from __future__ import annotations
 
+import re
 import sqlite3
 import sys
 import tempfile
 import unittest
-from unittest import mock
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -37,6 +38,37 @@ class AppTestCase(unittest.TestCase):
         self.assertIn(b"Prenota la Tua Visita", response.data)
         self.assertIn(b'id="contatti"', response.data)
         self.assertIn(b'navbar-toggler', response.data)
+        self.assertIn(b"/assets/", response.data)
+
+    def test_rendered_static_assets_are_versioned_and_cacheable(self) -> None:
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+
+        asset_urls = set(re.findall(rb'["\'](/assets/[^"\']+)["\']', response.data))
+        self.assertGreater(len(asset_urls), 0)
+
+        for asset_url in asset_urls:
+            asset_response = self.client.get(asset_url.decode("utf-8"))
+            try:
+                self.assertEqual(asset_response.status_code, 200, asset_url)
+                self.assertEqual(
+                    asset_response.headers["Cache-Control"],
+                    "public, max-age=31536000, immutable",
+                )
+                self.assertEqual(
+                    asset_response.headers["CDN-Cache-Control"],
+                    "public, max-age=31536000, immutable",
+                )
+            finally:
+                asset_response.close()
+
+    def test_font_css_is_self_hosted(self) -> None:
+        font_css = Path(__file__).resolve().parents[1] / "static" / "site-assets" / "google-fonts.css"
+        css_text = font_css.read_text(encoding="utf-8")
+
+        self.assertNotIn("https://fonts.gstatic.com", css_text)
+        self.assertIn("../webfonts/inter-latin.woff2", css_text)
+        self.assertIn("../webfonts/playfair-display-latin.woff2", css_text)
 
     def test_valid_booking_is_saved(self) -> None:
         with mock.patch.object(website, "send_appointment_notification") as notify_mock:

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#87A96B">
 
-    <link href="{{ url_for('static', filename='site-assets/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='site-assets/main.css') }}">
-    <link href="{{ url_for('static', filename='site-assets/google-fonts.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site-assets/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ static_asset('site-assets/main.css') }}">
+    <link href="{{ static_asset('site-assets/google-fonts.css') }}" rel="stylesheet">
 
     <meta name="description"
         content="Osteopata specializzato in dolori muscolo-scheletrici, approccio sportivo, cefalee e osteopatia pediatrica. Prenota la tua visita online.">
@@ -23,7 +23,7 @@
     <nav aria-label="barra di navigazione" class="navbar navbar-expand-lg fixed-top">
         <div class="container navbar-container">
             <a class="navbar-brand font-playfair" href="#home">
-                <img class="logo-main" src="{{ url_for('static', filename='site-assets/logo-main-128.png') }}" alt="Dr. Filippo Radice Logo">Dr.
+                <img class="logo-main" src="{{ static_asset('site-assets/logo-main-128.png') }}" alt="Dr. Filippo Radice Logo">Dr.
                 Filippo Radice
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -68,7 +68,7 @@
                             Prenota Visita
                         </a>
                         <a href="https://wa.me/+393458508870" class="btn" aria-label="Prenota su WhatsApp">
-                            <img src="{{ url_for('static', filename='site-assets/whastapp-logo.png') }}" alt="Apri chat WhatsApp" class="floating-image" loading="lazy">
+                            <img src="{{ static_asset('site-assets/whastapp-logo.png') }}" alt="Apri chat WhatsApp" class="floating-image" loading="lazy">
                         </a>
                     </div>
                 </div>
@@ -83,19 +83,19 @@
                         <div class="carousel-inner">
 
                             <div class="carousel-item active">
-                                <img src="{{ url_for('static', filename='site-assets/studio1.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Studio osteopatico" fetchpriority="high">
+                                <img src="{{ static_asset('site-assets/studio1.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Studio osteopatico" fetchpriority="high">
                             </div>
 
                             <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='site-assets/studio2.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Studio visite" loading="lazy">
+                                <img src="{{ static_asset('site-assets/studio2.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Studio visite" loading="lazy">
                             </div>
 
                             <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='site-assets/studio3.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Ambiente studio" loading="lazy">
+                                <img src="{{ static_asset('site-assets/studio3.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Ambiente studio" loading="lazy">
                             </div>
 
                             <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='site-assets/drfilippo.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Dr. Filippo Radice" loading="lazy">
+                                <img src="{{ static_asset('site-assets/drfilippo.jpeg') }}" class="d-block w-100 h-100 hero-image" alt="Dr. Filippo Radice" loading="lazy">
                             </div>
 
                         </div>
@@ -1824,7 +1824,7 @@
         </div>
     </div>
     <!-- Bootstrap JS -->
-    <script src="{{ url_for('static', filename='site-assets/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ static_asset('site-assets/bootstrap.bundle.min.js') }}"></script>
 
     <script>
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1948,7 +1948,7 @@
 
     <!-- Floating Clickable Image (Bottom Right) -->
     <a href="https://wa.me/+393458508870" class="floating-image-link" aria-label="Prenota su WhatsApp">
-        <img src="{{ url_for('static', filename='site-assets/whastapp-logo.png') }}" alt="Apri chat WhatsApp" class="floating-image" loading="lazy" />
+        <img src="{{ static_asset('site-assets/whastapp-logo.png') }}" alt="Apri chat WhatsApp" class="floating-image" loading="lazy" />
     </a>
 </body>
 

@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page_title }} | Dr. Filippo Radice</title>
-    <link href="{{ url_for('static', filename='site-assets/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='site-assets/main.css') }}">
-    <link href="{{ url_for('static', filename='site-assets/google-fonts.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site-assets/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ static_asset('site-assets/main.css') }}">
+    <link href="{{ static_asset('site-assets/google-fonts.css') }}" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(255, 255, 255, 0.95);">
         <div class="container navbar-container">
             <a class="navbar-brand font-playfair" href="{{ home_url }}">
-                <img class="logo-main" src="{{ url_for('static', filename='site-assets/logo-main-128.png') }}" alt="Dr. Filippo Radice Logo">
+                <img class="logo-main" src="{{ static_asset('site-assets/logo-main-128.png') }}" alt="Dr. Filippo Radice Logo">
                 Dr. Filippo Radice
             </a>
         </div>
@@ -26,6 +26,6 @@
         </div>
     </main>
 
-    <script src="{{ url_for('static', filename='site-assets/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ static_asset('site-assets/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
