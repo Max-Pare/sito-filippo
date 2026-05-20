@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    {% include "header.html" %}
+    <title>Appuntamenti | Dr. Filippo Radice</title>
+    <style>
+        body {
+            background: #f7f8f5;
+            color: #1f2a24;
+        }
+
+        .admin-shell {
+            padding: 112px 0 48px;
+        }
+
+        .admin-toolbar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .admin-title {
+            margin: 0;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            line-height: 1.05;
+        }
+
+        .appointment-count {
+            margin: 8px 0 0;
+            color: #5c6b62;
+        }
+
+        .admin-table-wrap {
+            overflow-x: auto;
+            background: #ffffff;
+            border: 1px solid rgba(31, 42, 36, 0.12);
+            border-radius: 8px;
+            box-shadow: 0 16px 40px rgba(31, 42, 36, 0.08);
+        }
+
+        .admin-table {
+            min-width: 980px;
+            margin: 0;
+        }
+
+        .admin-table th {
+            color: #405148;
+            font-size: 0.78rem;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .admin-table td {
+            vertical-align: top;
+        }
+
+        .notes-cell {
+            max-width: 360px;
+            white-space: pre-wrap;
+        }
+
+        .empty-state {
+            background: #ffffff;
+            border: 1px solid rgba(31, 42, 36, 0.12);
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        @media (max-width: 767.98px) {
+            .admin-shell {
+                padding-top: 96px;
+            }
+
+            .admin-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(255, 255, 255, 0.95);">
+        <div class="container navbar-container">
+            <a class="navbar-brand font-playfair" href="{{ url_for('home') }}">
+                <img class="logo-main" src="{{ static_asset('site-assets/logo-main-128.png') }}" alt="Dr. Filippo Radice Logo">
+                Dr. Filippo Radice
+            </a>
+        </div>
+    </nav>
+
+    <main class="admin-shell">
+        <div class="container">
+            <div class="admin-toolbar">
+                <div>
+                    <h1 class="admin-title">Appuntamenti</h1>
+                    <p class="appointment-count">{{ appointments|length }} richieste salvate</p>
+                </div>
+                <a class="btn btn-outline-secondary" href="{{ url_for('home') }}">Home</a>
+            </div>
+
+            {% if appointments %}
+                <div class="admin-table-wrap">
+                    <table class="table table-hover admin-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ricevuto</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Visita</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appointment in appointments %}
+                                <tr>
+                                    <td>{{ appointment["created_at"] }}</td>
+                                    <td>{{ appointment["patient_name"] }}</td>
+                                    <td>{{ appointment["visit_type"] }}</td>
+                                    <td>{{ appointment["patient_phone"] }}</td>
+                                    <td>
+                                        {% set patient_email = appointment["patient_email"] %}
+                                        {% if patient_email %}
+                                            <a href="mailto:{{ patient_email }}">{{ patient_email }}</a>
+                                        {% endif %}
+                                    </td>
+                                    <td class="notes-cell">{{ appointment["patient_notes"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <p class="lead mb-0">Nessun appuntamento salvato.</p>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <script src="{{ static_asset('site-assets/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

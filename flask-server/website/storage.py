@@ -88,6 +88,26 @@ def save_appointment(submission) -> None:
     database.commit()
 
 
+def list_appointments() -> list[sqlite3.Row]:
+    database = get_db()
+    return list(
+        database.execute(
+            """
+            SELECT
+                id,
+                created_at,
+                patient_name,
+                visit_type,
+                patient_email,
+                patient_phone,
+                patient_notes
+            FROM appointments
+            ORDER BY created_at DESC, id DESC
+            """
+        )
+    )
+
+
 def _configure_sqlite(connection: sqlite3.Connection, journal_mode: str) -> None:
     connection.execute("PRAGMA foreign_keys = ON")
     connection.execute(f"PRAGMA journal_mode = {journal_mode}")

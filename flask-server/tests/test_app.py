@@ -5,6 +5,7 @@ import sqlite3
 import sys
 import tempfile
 import unittest
+from base64 import b64encode
 from pathlib import Path
 from unittest import mock
 
@@ -24,6 +25,8 @@ class AppTestCase(unittest.TestCase):
                 "TESTING": True,
                 "DATABASE_PATH": str(self.database_path),
                 "SQLITE_JOURNAL_MODE": "DELETE",
+                "APPOINTMENTS_ADMIN_USERNAME": "admin",
+                "APPOINTMENTS_ADMIN_PASSWORD": "secret",
             }
         )
         self.client = app.test_client()
@@ -149,6 +152,72 @@ class AppTestCase(unittest.TestCase):
 
         self.assertEqual(response.status_code, 400)
         self.assertIn(b"Numero di telefono non valido", response.data)
+
+    def test_admin_appointments_requires_basic_auth(self) -> None:
+        response = self.client.get("/admin/appuntamenti")
+
+        self.assertEqual(response.status_code, 401)
+        self.assertIn("Basic", response.headers["WWW-Authenticate"])
+        self.assertEqual(response.headers["Cache-Control"], "no-store")
+
+    def test_admin_appointments_rejects_bad_basic_auth(self) -> None:
+        response = self.client.get(
+            "/admin/appuntamenti",
+            headers={"Authorization": self._basic_auth_header("admin", "wrong")},
+        )
+
+        self.assertEqual(response.status_code, 401)
+
+    def test_admin_appointments_lists_saved_bookings(self) -> None:
+        with sqlite3.connect(self.database_path) as connection:
+            connection.executemany(
+                """
+                INSERT INTO appointments (
+                    created_at,
+                    patient_name,
+                    visit_type,
+                    patient_email,
+                    patient_phone,
+                    patient_notes
+                ) VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    (
+                        "2026-05-19T09:00:00+02:00",
+                        "Mario Rossi",
+                        "prima-visita",
+                        "mario@example.com",
+                        "+39 345 850 8870",
+                        "Dolore cervicale.",
+                    ),
+                    (
+                        "2026-05-20T10:30:00+02:00",
+                        "Luisa Bianchi",
+                        "controllo",
+                        "",
+                        "+39 340 123 4567",
+                        "",
+                    ),
+                ),
+            )
+
+        response = self.client.get(
+            "/admin/appuntamenti",
+            headers={"Authorization": self._basic_auth_header("admin", "secret")},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Cache-Control"], "no-store")
+        self.assertIn(b"Appuntamenti", response.data)
+        self.assertIn(b"2 richieste salvate", response.data)
+        self.assertIn(b"Luisa Bianchi", response.data)
+        self.assertIn(b"Mario Rossi", response.data)
+        self.assertLess(response.data.index(b"Luisa Bianchi"), response.data.index(b"Mario Rossi"))
+
+    @staticmethod
+    def _basic_auth_header(username: str, password: str) -> str:
+        token = b64encode(f"{username}:{password}".encode("utf-8")).decode("ascii")
+        return f"Basic {token}"
 
 
 if __name__ == "__main__":

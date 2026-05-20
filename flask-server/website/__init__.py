@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hmac
 import logging
 import os
 import re
@@ -7,12 +8,21 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from flask import Flask, current_app, render_template, request, send_from_directory, url_for
+from flask import (
+    Flask,
+    Response,
+    current_app,
+    make_response,
+    render_template,
+    request,
+    send_from_directory,
+    url_for,
+)
 from dotenv import load_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from .notifications import send_appointment_notification
-from .storage import init_storage, save_appointment
+from .storage import init_storage, list_appointments, save_appointment
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 ALLOWED_VISIT_TYPES = {"prima-visita", "controllo"}
@@ -49,6 +59,8 @@ def create_app(test_config: dict | None = None) -> Flask:
         MAX_CONTENT_LENGTH=16 * 1024,
         STATIC_CACHE_SECONDS=STATIC_CACHE_SECONDS,
         SQLITE_JOURNAL_MODE=os.getenv("SQLITE_JOURNAL_MODE", "WAL"),
+        APPOINTMENTS_ADMIN_USERNAME=os.getenv("APPOINTMENTS_ADMIN_USERNAME", ""),
+        APPOINTMENTS_ADMIN_PASSWORD=os.getenv("APPOINTMENTS_ADMIN_PASSWORD", ""),
         NTFY_URL=os.getenv(
             "NTFY_URL",
             "https://ntfy.filipporadiceosteopata.com/Appuntamenti",
@@ -129,6 +141,22 @@ def _register_routes(app: Flask) -> None:
     @app.get("/health")
     def healthcheck():
         return {"status": "ok"}, 200
+
+    @app.get("/admin/appuntamenti")
+    def admin_appointments():
+        auth_response = _require_admin_basic_auth()
+        if auth_response is not None:
+            return auth_response
+
+        response = make_response(
+            render_template(
+                "admin_appointments.html",
+                appointments=list_appointments(),
+            )
+        )
+        response.headers["Cache-Control"] = "no-store"
+        response.headers["CDN-Cache-Control"] = "no-store"
+        return response
 
     @app.post("/prenota")
     def book_visit():
@@ -240,6 +268,39 @@ def _message_page(title: str, message: str, status_code: int) -> tuple[str, int]
         ),
         status_code,
     )
+
+
+def _require_admin_basic_auth() -> Response | None:
+    expected_username = current_app.config["APPOINTMENTS_ADMIN_USERNAME"]
+    expected_password = current_app.config["APPOINTMENTS_ADMIN_PASSWORD"]
+    if not expected_username or not expected_password:
+        current_app.logger.error("Appointments admin credentials are not configured")
+        return _basic_auth_challenge()
+
+    authorization = request.authorization
+    if authorization is None:
+        return _basic_auth_challenge()
+
+    username = authorization.username or ""
+    password = authorization.password or ""
+    username_matches = _constant_time_equal(username, expected_username)
+    password_matches = _constant_time_equal(password, expected_password)
+    if not (username_matches and password_matches):
+        return _basic_auth_challenge()
+
+    return None
+
+
+def _basic_auth_challenge() -> Response:
+    response = Response("Autenticazione richiesta.", 401)
+    response.headers["WWW-Authenticate"] = 'Basic realm="Appuntamenti", charset="UTF-8"'
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["CDN-Cache-Control"] = "no-store"
+    return response
+
+
+def _constant_time_equal(value: str, expected: str) -> bool:
+    return hmac.compare_digest(value.encode("utf-8"), expected.encode("utf-8"))
 
 
 def _validate_submission(form_data) -> AppointmentSubmission:
