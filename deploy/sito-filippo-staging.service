@@ -1,0 +1,21 @@
+[Unit]
+Description=sito-filippo (staging)
+After=network.target
+
+[Service]
+User=deploy
+Group=deploy
+Environment=HOST=127.0.0.1
+Environment=PORT=8081
+ExecStart=/srv/sito-filippo-staging/run.sh
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

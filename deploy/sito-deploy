@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Deploy trigger for sito-filippo. Installed at /usr/local/bin/sito-deploy on the VPS.
+# Invoked as the forced command of the GitHub Actions SSH key: the requested
+# command arrives in SSH_ORIGINAL_COMMAND ("prod" or "staging"). Can also be run
+# manually: sito-deploy prod|staging
+set -Eeuo pipefail
+
+target="${SSH_ORIGINAL_COMMAND:-${1:-}}"
+
+case "$target" in
+	prod)
+		dir=/srv/sito-filippo
+		branch=main
+		svc=sito-filippo.service
+		port=8080
+		;;
+	staging)
+		dir=/srv/sito-filippo-staging
+		branch=staging
+		svc=sito-filippo-staging.service
+		port=8081
+		;;
+	*)
+		echo "usage: sito-deploy prod|staging" >&2
+		exit 2
+		;;
+esac
+
+cd "$dir"
+git fetch origin "$branch"
+git reset --hard "origin/$branch"
+./install.sh
+sudo /usr/bin/systemctl restart "$svc"
+
+for _ in $(seq 1 20); do
+	if curl -fsS "http://127.0.0.1:$port/health" >/dev/null 2>&1; then
+		echo "deploy $target OK ($(git rev-parse --short HEAD))"
+		exit 0
+	fi
+	sleep 1
+done
+
+echo "deploy $target FAILED: health check did not pass" >&2
+sudo /usr/bin/systemctl status "$svc" --no-pager >&2 || true
+exit 1
