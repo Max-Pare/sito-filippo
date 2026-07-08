@@ -46,6 +46,8 @@ if [ ! -d "$STAGING_DIR/.git" ]; then
 	install -d -o "$DEPLOY_USER" -g "$DEPLOY_USER" "$STAGING_DIR"
 	sudo -u "$DEPLOY_USER" git clone --branch staging "$REPO_SSH" "$STAGING_DIR"
 fi
+# Pre-existing clones may be owned by another user (e.g. ubuntu); deploy must own them
+chown -R "$DEPLOY_USER:$DEPLOY_USER" "$PROD_DIR" "$STAGING_DIR"
 sudo -u "$DEPLOY_USER" bash "$PROD_DIR/install.sh"
 sudo -u "$DEPLOY_USER" bash "$STAGING_DIR/install.sh"
 
