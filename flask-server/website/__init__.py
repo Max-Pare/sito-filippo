@@ -131,6 +131,14 @@ def _register_routes(app: Flask) -> None:
             mimetype='image/vnd.microsoft.icon'
           )
 
+    @app.get("/robots.txt")
+    def robots_txt():
+        return send_from_directory(
+            app.static_folder,
+            "robots.txt",
+            mimetype="text/plain",
+        )
+
     @app.get("/privacy")
     def privacy_policy():
         return render_template(

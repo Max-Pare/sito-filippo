@@ -73,6 +73,13 @@ class AppTestCase(unittest.TestCase):
         self.assertIn("../webfonts/inter-latin.woff2", css_text)
         self.assertIn("../webfonts/playfair-display-latin.woff2", css_text)
 
+    def test_robots_txt_is_served(self) -> None:
+        response = self.client.get("/robots.txt")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Content-Type"].split(";")[0], "text/plain")
+        self.assertIn(b"User-agent: *", response.data)
+
     def test_valid_booking_is_saved(self) -> None:
         with mock.patch.object(website, "send_appointment_notification") as notify_mock:
             response = self.client.post(

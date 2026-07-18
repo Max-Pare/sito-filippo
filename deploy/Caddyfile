@@ -9,6 +9,17 @@
 	}
 }
 
+# Real client IP: Cloudflare proxies all public traffic, so the TCP peer is a CF
+# edge node. CF-Connecting-IP carries the true client; fall back to the peer for
+# non-CF requests (local health checks). Only trustworthy once the firewall
+# restricts 80/443 ingress to Cloudflare ranges (deploy/cloudflare-ufw.sh).
+(cf_real_ip) {
+	map {header.CF-Connecting-IP} {real_client_ip} {
+		"" {remote_host}
+		default {header.CF-Connecting-IP}
+	}
+}
+
 filipporadiceosteopata.com, www.filipporadiceosteopata.com {
 	import cloudflare_tls
 
@@ -24,14 +35,16 @@ filipporadiceosteopata.com, www.filipporadiceosteopata.com {
 	@static_assets path /assets/* /static/* /favicon.ico
 	header @static_assets Cache-Control "public, max-age=31536000, immutable"
 
+	import cf_real_ip
+
 	reverse_proxy 127.0.0.1:8080 {
 		health_uri /health
 		health_interval 30s
 		health_timeout 5s
 
 		header_up Host {host}
-		header_up X-Real-IP {remote_host}
-		header_up X-Forwarded-For {remote_host}
+		header_up X-Real-IP {real_client_ip}
+		header_up X-Forwarded-For {real_client_ip}
 		header_up X-Forwarded-Proto {scheme}
 		header_up X-Forwarded-Host {host}
 	}
@@ -47,14 +60,16 @@ staging.filipporadiceosteopata.com {
 		X-Robots-Tag "noindex, nofollow"
 	}
 
+	import cf_real_ip
+
 	reverse_proxy 127.0.0.1:8081 {
 		health_uri /health
 		health_interval 30s
 		health_timeout 5s
 
 		header_up Host {host}
-		header_up X-Real-IP {remote_host}
-		header_up X-Forwarded-For {remote_host}
+		header_up X-Real-IP {real_client_ip}
+		header_up X-Forwarded-For {real_client_ip}
 		header_up X-Forwarded-Proto {scheme}
 		header_up X-Forwarded-Host {host}
 	}
